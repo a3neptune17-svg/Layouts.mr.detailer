@@ -3,124 +3,145 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Sparkles, Shield, Droplets, Gauge, Check, ArrowRight, Star, Clock } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Sparkles, Shield, Droplets, Gauge, Check, ArrowRight, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 
 const SERVICES_DATA = [
   {
     id: "ceramic",
-    title: "9H Nano Ceramic Coating",
-    badge: "5-Year Hydrophobic Seal",
+    title: "9H CERAMIC COATING",
+    badge: "HYDROPHOBIC SEAL",
     image: "/images/IMG_20260809_180252.jpg.jpeg",
     icon: Sparkles,
-    price: "From $599",
-    duration: "1-2 Days",
-    description: "Multi-layer nano-ceramic coating creating a crystal-clear shield against UV rays, acid rain, bird drops, and swirl marks with extreme hydrophobic gloss.",
+    price: "$599",
+    duration: "1-2 DAYS",
+    tag: "COATING",
     features: [
-      "9H Hardness Glass Protection",
-      "Self-Cleaning Hydrophobic Layer",
-      "Mirror-Like Deep Paint Gloss",
-      "5-Year Transferable Warranty",
-      "Includes 1-Stage Gloss Polish",
-      "Certified Gtechniq Installer"
+      "9H GLASS MATRIX",
+      "HYDROPHOBIC LAYER",
+      "HIGH-GLOSS DEPTH",
+      "5-YR WARRANTY",
+      "GLOSS POLISH",
+      "CERTIFIED"
     ],
   },
   {
     id: "ppf",
-    title: "Paint Protection Film (PPF)",
-    badge: "Self-Healing Armor",
+    title: "PAINT PROTECTION FILM",
+    badge: "BODY ARMOR",
     image: "/images/IMG_20260809_180419.jpg.jpeg",
     icon: Shield,
-    price: "From $899",
-    duration: "2-3 Days",
-    description: "Military-grade clear polyurethane film designed to absorb rock chips, road debris, and scratches with self-healing thermal technology.",
+    price: "$899",
+    duration: "2-3 DAYS",
+    tag: "PROTECTION",
     features: [
-      "Absorbs Impact & Rock Chips",
-      "Heat-Activated Self Healing",
-      "Invisible High-Gloss Finish",
-      "10-Year Anti-Yellowing Guarantee",
-      "Custom Edge Wraps",
-      "XPEL Stealth & Ultimate Plus"
+      "CHIP & SCRATCH ARMOR",
+      "SELF-HEALING TPU",
+      "INVISIBLE GLOSS",
+      "10-YR GUARANTEE",
+      "CUSTOM CUT EDGES",
+      "XPEL ULTIMATE"
     ],
   },
   {
     id: "correction",
-    title: "Paint Correction & Polish",
-    badge: "Showroom Mirror Finish",
+    title: "PAINT CORRECTION",
+    badge: "SHOWROOM POLISH",
     image: "/images/IMG_20260809_180638.jpg.jpeg",
     icon: Gauge,
-    price: "From $399",
-    duration: "1 Day",
-    description: "Multi-stage machine compounding and dual-action polishing to eliminate up to 95% of swirl marks, light scratches, and oxidation.",
+    price: "$399",
+    duration: "1 DAY",
+    tag: "RESTORATION",
     features: [
-      "Depth Gauge Panel Mapping",
-      "Swirl & Scratch Removal",
-      "Multi-Stage Polish Refinement",
-      "Preps Surface for Coating",
-      "Dual-Action Rotary Compound",
-      "Zero Buffer Trails Guarantee"
+      "DEPTH PANEL MAPPING",
+      "SWIRL REMOVAL",
+      "MULTI-STAGE POLISH",
+      "SURFACE PREP",
+      "ROTARY COMPOUND",
+      "ZERO BUFF MARKS"
     ],
   },
   {
     id: "interior",
-    title: "Interior Deep Extraction & Care",
-    badge: "Sanitized & Conditioned",
+    title: "INTERIOR SPA",
+    badge: "STEAM EXTRACTION",
     image: "/images/IMG_20260809_180739.jpg.jpeg",
     icon: Droplets,
-    price: "From $249",
-    duration: "4 Hours",
-    description: "Deep hot-water extraction, leather steam rejuvenation, alcantara brushing, and UV protection for a spotless, factory-fresh cabin atmosphere.",
+    price: "$249",
+    duration: "4 HOURS",
+    tag: "CABIN CARE",
     features: [
-      "Hot-Water Stain Extraction",
-      "pH-Balanced Leather Nourish",
-      "Odor & Bacteria Elimination",
-      "Matte UV Trim Sealant",
-      "Steam Crevice Sterilization",
-      "Alcantara & Fabric Guard"
+      "HOT-WATER EXTRACTION",
+      "LEATHER NOURISH",
+      "OZONE PURIFY",
+      "UV TRIM SEAL",
+      "STEAM STERILIZE",
+      "ALCANTARA GUARD"
     ],
   },
 ]
 
 export function Services01() {
-  const [activeTab, setActiveTab] = useState("ceramic")
-  const activeService = SERVICES_DATA.find((s) => s.id === activeTab) || SERVICES_DATA[0]
+  const [[activeIndex, direction], setActiveIndex] = useState([0, 0])
+
+  const activeService = SERVICES_DATA[activeIndex]
   const Icon = activeService.icon
 
+  const paginate = (newDirection: number) => {
+    const nextIdx = (activeIndex + newDirection + SERVICES_DATA.length) % SERVICES_DATA.length
+    setActiveIndex([nextIdx, newDirection])
+  }
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 500 : -500,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 500 : -500,
+      opacity: 0,
+    }),
+  }
+
   return (
-    <section id="services" className="relative bg-[#0B0D0A] py-12 lg:py-16 text-white border-t border-b border-white/10">
+    <section id="services" className="relative bg-[#0B0D0A] py-14 lg:py-20 text-white border-t border-b border-white/10 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6 mb-8">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand border border-brand/30">
-              <Sparkles className="size-3 text-brand" /> Interactive Catalog
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1 text-xs font-black uppercase tracking-widest text-brand-foreground">
+              <Sparkles className="size-3 text-brand-foreground" /> CATALOG
             </span>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Precision Detailing Matrix
+            <h2 className="mt-3 text-5xl sm:text-7xl font-black tracking-tight text-white uppercase leading-none">
+              SERVICES
             </h2>
-            <p className="mt-1 text-sm text-white/70 max-w-lg">
-              Click tabs to explore specs, pricing, and turn-around times for each package.
-            </p>
           </div>
           
           <Link
             href="#pricing"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-white/10 shrink-0"
+            className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-6 py-3 text-xs font-black uppercase tracking-widest text-brand hover:bg-brand hover:text-black transition-all shrink-0"
           >
-            Compare All Packages <ArrowRight className="size-3.5" />
+            <span>PACKAGES</span> <ArrowRight className="size-3.5" />
           </Link>
         </div>
 
-        {/* Tab Selection Buttons */}
-        <div className="mt-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          {SERVICES_DATA.map((service) => {
+        {/* Quick Category Indicator Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mt-4">
+          {SERVICES_DATA.map((service, idx) => {
             const TabIcon = service.icon
-            const isActive = activeTab === service.id
+            const isActive = activeIndex === idx
             return (
               <button
                 key={service.id}
-                onClick={() => setActiveTab(service.id)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-bold transition-all shrink-0 ${
+                onClick={() => setActiveIndex([idx, idx > activeIndex ? 1 : -1])}
+                className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest transition-all shrink-0 ${
                   isActive
                     ? "bg-brand text-brand-foreground shadow-lg shadow-brand/20 scale-[1.02]"
                     : "bg-white/5 text-white/70 hover:bg-white/10 border border-white/10"
@@ -133,77 +154,116 @@ export function Services01() {
           })}
         </div>
 
-        {/* Active Service Showcase Box */}
-        <div className="mt-6 rounded-3xl border border-white/10 bg-[#121511] p-6 lg:p-8 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left Image Showcase */}
-            <div className="lg:col-span-6 relative h-72 lg:h-96 rounded-2xl overflow-hidden bg-neutral-900 border border-white/10">
-              <Image
-                src={activeService.image}
-                alt={activeService.title}
-                fill
-                className="object-cover transition-all duration-500"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              
-              <span className="absolute top-4 left-4 rounded-full bg-black/80 backdrop-blur-md px-3.5 py-1 text-xs font-bold text-brand border border-brand/30">
-                {activeService.badge}
-              </span>
+        {/* Outer Container with Far Left & Far Right Navigation Arrows */}
+        <div className="relative mt-8">
+          {/* Far Left Arrow Button */}
+          <button
+            type="button"
+            onClick={() => paginate(-1)}
+            aria-label="Slide Left to Previous Service"
+            title="Previous Service"
+            className="absolute -left-3 sm:-left-5 lg:-left-7 top-1/2 -translate-y-1/2 z-30 flex size-12 sm:size-14 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-2xl hover:scale-110 transition-transform border-2 border-black"
+          >
+            <ChevronLeft className="size-7 stroke-[3]" />
+          </button>
 
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-xs text-white/90 bg-black/80 px-3 py-1 rounded-full backdrop-blur-md border border-white/10">
-                  <Clock className="size-3.5 text-brand" /> {activeService.duration}
-                </span>
-                <span className="rounded-full bg-brand px-4 py-1.5 text-xs font-extrabold text-brand-foreground shadow-md">
-                  {activeService.price}
-                </span>
-              </div>
-            </div>
+          {/* Far Right Arrow Button */}
+          <button
+            type="button"
+            onClick={() => paginate(1)}
+            aria-label="Slide Right to Next Service"
+            title="Next Service"
+            className="absolute -right-3 sm:-right-5 lg:-right-7 top-1/2 -translate-y-1/2 z-30 flex size-12 sm:size-14 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-2xl hover:scale-110 transition-transform border-2 border-black"
+          >
+            <ChevronRight className="size-7 stroke-[3]" />
+          </button>
 
-            {/* Right Specification Panel */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/20 text-brand border border-brand/30">
-                  <Icon className="size-6" />
-                </span>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">{activeService.title}</h3>
-                  <p className="text-xs font-semibold text-brand">{activeService.badge}</p>
-                </div>
-              </div>
+          {/* Horizontal Sliding Animated Viewport */}
+          <div className="min-h-[480px] w-full overflow-hidden rounded-3xl border border-white/10 bg-[#121511] p-6 lg:p-10 shadow-2xl">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={activeIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 280, damping: 28 },
+                  opacity: { duration: 0.2 },
+                }}
+                className="w-full"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  
+                  {/* Left Image Showcase */}
+                  <div className="lg:col-span-6 relative h-72 lg:h-96 rounded-2xl overflow-hidden bg-neutral-900 border border-white/10 group">
+                    <Image
+                      src={activeService.image}
+                      alt={activeService.title}
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    
+                    <span className="absolute top-4 left-4 rounded-full bg-black/80 backdrop-blur-md px-4 py-1 text-xs font-black uppercase tracking-widest text-brand border border-brand/30">
+                      {activeService.badge}
+                    </span>
 
-              <p className="text-sm leading-relaxed text-white/80">
-                {activeService.description}
-              </p>
-
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3">Included Studio Specs</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {activeService.features.map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-xs font-medium text-white/90 bg-white/5 p-2.5 rounded-xl border border-white/10">
-                      <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
-                        <Check className="size-2.5 stroke-[3]" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-white/90 bg-black/80 px-3 py-1 rounded-full backdrop-blur-md border border-white/10">
+                        <Clock className="size-3.5 text-brand" /> {activeService.duration}
                       </span>
-                      <span>{feat}</span>
+                      <span className="rounded-full bg-brand px-4 py-1.5 text-xs font-black text-brand-foreground shadow-md">
+                        {activeService.price}
+                      </span>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Right Specification Panel */}
+                  <div className="lg:col-span-6 space-y-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="flex size-11 items-center justify-center rounded-2xl bg-brand/20 text-brand border border-brand/30">
+                          <Icon className="size-6" />
+                        </span>
+                        <div>
+                          <h3 className="text-3xl font-black uppercase text-white tracking-tight">{activeService.title}</h3>
+                          <p className="text-xs font-black uppercase tracking-widest text-brand">{activeService.badge}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-black uppercase tracking-widest text-white/50 mb-3">STUDIO SPECS</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {activeService.features.map((feat) => (
+                          <div key={feat} className="flex items-center gap-2 text-xs font-black tracking-widest text-white bg-white/5 p-3 rounded-xl border border-white/10">
+                            <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-brand/20 text-brand">
+                              <Check className="size-2.5 stroke-[3]" />
+                            </span>
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                      <div className="text-xs text-white/60 font-black uppercase tracking-widest">STARTING <span className="text-xl font-black text-brand">{activeService.price}</span></div>
+                      <Link
+                        href="#contact"
+                        className="inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3 text-xs font-black uppercase tracking-widest text-brand-foreground shadow-md transition-transform hover:scale-105"
+                      >
+                        <span>BOOK NOW</span>
+                        <ArrowRight className="size-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                <div className="text-xs text-white/60 font-medium">Starting from <span className="text-lg font-bold text-white">{activeService.price}</span></div>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-xs font-bold text-brand-foreground shadow-md transition-transform hover:scale-105"
-                >
-                  <span>Book {activeService.title}</span>
-                  <ArrowRight className="size-3.5" />
-                </Link>
-              </div>
-            </div>
-
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
@@ -211,4 +271,3 @@ export function Services01() {
     </section>
   )
 }
-

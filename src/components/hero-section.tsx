@@ -10,12 +10,11 @@ import {
 } from "framer-motion"
 
 const TICKER = [
-  "Ceramic Coating",
-  "Paint Protection Film",
-  "Paint Correction",
-  "Interior Detailing",
-  "AutoMods",
-  "Performance Tuning",
+  "CERAMIC",
+  "PPF",
+  "POLISH",
+  "INTERIOR",
+  "DETAILING",
 ]
 
 export function HeroSection() {
@@ -34,7 +33,7 @@ export function HeroSection() {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative flex min-h-screen w-full flex-col overflow-hidden bg-ink text-white"
+      className="relative flex min-h-[85vh] w-full flex-col overflow-hidden bg-ink text-white"
     >
       <motion.video
         autoPlay
@@ -46,7 +45,7 @@ export function HeroSection() {
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
+        <source src="/videos/video-project-2.mp4" type="video/mp4" />
       </motion.video>
 
       <div aria-hidden className="bg-grain pointer-events-none absolute inset-0" />
@@ -61,19 +60,19 @@ export function HeroSection() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.5, ease: "easeOut" }}
-        className="relative z-10 flex w-full items-center justify-between px-6 pt-24 sm:px-10 sm:pt-10 lg:px-24"
+        className="relative z-10 flex w-full items-center justify-between px-6 pt-20 sm:px-10 sm:pt-10 lg:px-24"
       >
         <div className="flex items-center gap-2">
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand/60" />
             <span className="relative inline-flex size-2 rounded-full bg-brand" />
           </span>
-          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-white/60">
-            Now booking
+          <span className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-white/80">
+            OPEN
           </span>
         </div>
-        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-white/40">
-          4,800+ Cars Detailed
+        <span className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-brand">
+          4,800+
         </span>
       </motion.div>
 
@@ -107,11 +106,11 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.9, ease: "easeOut" }}
-          className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-md"
+          className="flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-5 py-2 backdrop-blur-md"
         >
           <Award className="size-3.5 text-brand" />
-          <span className="text-xs font-medium tracking-wide text-white/70">
-            Mr. Detailer Studio · Est. 2013
+          <span className="text-xs font-black uppercase tracking-widest text-white">
+            MR. DETAILER
           </span>
         </motion.div>
       </div>
@@ -121,7 +120,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.8, ease: "easeOut" }}
-        className="relative z-10 overflow-hidden border-t border-white/10 bg-white/5 py-3 backdrop-blur-sm"
+        className="relative z-10 overflow-hidden border-t border-white/10 bg-black/40 py-3 backdrop-blur-sm"
       >
         <div className="animate-marquee flex w-max items-center gap-10 whitespace-nowrap">
           {Array.from({ length: 2 }).map((_, dup) => (
@@ -129,10 +128,10 @@ export function HeroSection() {
               {TICKER.map((label) => (
                 <span
                   key={`${dup}-${label}`}
-                  className="flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.2em] text-white/50"
+                  className="flex items-center gap-10 text-xs font-black uppercase tracking-[0.25em] text-white/60"
                 >
                   {label}
-                  <span aria-hidden className="size-1 rounded-full bg-brand/70" />
+                  <span aria-hidden className="size-1 rounded-full bg-brand" />
                 </span>
               ))}
             </div>

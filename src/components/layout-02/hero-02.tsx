@@ -5,61 +5,61 @@ import { Sparkles, ArrowRight, ShieldCheck, Star } from "lucide-react"
 
 export function Hero02() {
   return (
-    <section className="relative flex min-h-[70vh] w-full flex-col justify-center overflow-hidden bg-black text-white">
-      {/* Background Full-bleed Video */}
+    <section className="relative flex min-h-[75vh] w-full flex-col justify-center overflow-hidden bg-[#0b0d0a] text-white">
+      {/* Background Full-bleed Video - Clear Visibility */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover opacity-50 scale-105"
+        className="absolute inset-0 h-full w-full object-cover opacity-80"
       >
-        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
+        <source src="/videos/video-project-2.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Ambient Vignette & Neon Gradient Mask */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/70" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-96 bg-brand/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Light Overlay Frame */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d0a]/85 via-[#0b0d0a]/25 to-[#0b0d0a]/65" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center space-y-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-4 py-1.5 text-xs font-bold text-brand backdrop-blur-xl shadow-[0_0_20px_rgba(229,252,160,0.2)]">
-          <Sparkles className="size-4" /> Dark Luxury Studio · Dallas Cleanroom
+        <div className="inline-flex items-center gap-2 rounded-full border border-brand/60 bg-brand/20 px-5 py-1.5 text-xs font-black text-brand uppercase tracking-widest backdrop-blur-xl">
+          <Sparkles className="size-4" /> STUDIO
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white drop-shadow-2xl">
-          THE ART OF AUTOMOTIVE <br />
-          <span className="bg-gradient-to-r from-brand via-white to-brand bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(229,252,160,0.4)]">
-            PERFECTION & ARMOR
+        {/* Clean Solid Non-Shiny Text */}
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none text-white uppercase">
+          PERFECTION & <br />
+          <span className="text-brand">
+            ARMOR
           </span>
         </h1>
 
-        <p className="mx-auto max-w-xl text-sm sm:text-base text-white/80 leading-relaxed font-light">
-          Museum-grade paint correction, 9H nano-ceramic glass shields, and self-healing clear PPF armor tailored for exotic and ultra-luxury automobiles.
+        <p className="text-xs font-black tracking-[0.3em] text-brand uppercase">
+          CERAMIC · PPF · POLISH
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="#services"
-            className="inline-flex items-center gap-2.5 rounded-full bg-brand px-8 py-4 text-xs font-extrabold text-brand-foreground shadow-[0_0_30px_rgba(229,252,160,0.3)] transition-transform hover:scale-105"
+            className="inline-flex items-center gap-2.5 rounded-full bg-brand px-9 py-4 text-xs font-black uppercase tracking-widest text-[#0c1206] shadow-xl transition-transform hover:scale-105"
           >
-            <span>Reserve Studio Bay</span>
+            <span>BOOK</span>
             <ArrowRight className="size-4" />
           </Link>
           <Link
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-4 text-xs font-bold text-white backdrop-blur-xl transition-all hover:border-brand hover:bg-brand/10 hover:text-brand"
+            className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-black/60 px-8 py-4 text-xs font-black uppercase tracking-widest text-brand backdrop-blur-xl transition-all hover:bg-brand hover:text-black"
           >
-            <span>Custom Spec Quote</span>
+            <span>QUOTE</span>
           </Link>
         </div>
 
-        <div className="flex items-center justify-center gap-8 pt-6 border-t border-white/10 text-xs text-white/60 font-medium">
+        <div className="flex items-center justify-center gap-6 pt-6 border-t border-white/15 text-xs text-white/90 font-black tracking-widest uppercase">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="size-4 text-brand" /> XPEL & Gtechniq Certified
+            <ShieldCheck className="size-4 text-brand" /> CERTIFIED
           </div>
           <span>·</span>
           <div className="flex items-center gap-1.5 text-brand">
-            <Star className="size-4 fill-brand" /> 5.0 Rating (480+ Reviews)
+            <Star className="size-4 fill-brand text-brand" /> 5.0 ★
           </div>
         </div>
       </div>

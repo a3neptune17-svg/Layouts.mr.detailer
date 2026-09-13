@@ -6,12 +6,13 @@ import Link from "next/link"
 import { PhoneCall, Menu, X, ChevronRight } from "lucide-react"
 
 const NAV_ITEMS = [
-  { href: "#top", label: "Home" },
-  { href: "#services", label: "Services Matrix" },
-  { href: "#process", label: "Studio Workflow" },
-  { href: "#pricing", label: "Package Pricing" },
-  { href: "#gallery", label: "Showroom" },
-  { href: "#contact", label: "Contact Us" },
+  { href: "#top", label: "HOME" },
+  { href: "#services", label: "SERVICES" },
+  { href: "#process", label: "PROCESS" },
+  { href: "#blog", label: "JOURNAL" },
+  { href: "#gallery", label: "GALLERY" },
+  { href: "#ratings", label: "RATINGS" },
+  { href: "#contact", label: "BOOKING" },
 ]
 
 export function Navbar01() {
@@ -19,10 +20,10 @@ export function Navbar01() {
 
   return (
     <>
-      <header className="sticky top-[41px] z-40 w-full border-b border-white/10 bg-[#0B0D0A]/90 backdrop-blur-xl shadow-2xl text-white">
+      <header className="sticky top-[41px] z-40 w-full border-b border-white/10 bg-[#0B0D0A]/95 backdrop-blur-xl shadow-2xl text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           
-          {/* Brand Logo & Studio Identity */}
+          {/* Original Brand Logo */}
           <div className="flex items-center gap-4">
             <Link href="#top" className="flex items-center gap-2">
               <Image
@@ -34,38 +35,38 @@ export function Navbar01() {
                 priority
               />
             </Link>
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-400">
-              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" /> Studio Open Today
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-[10px] font-black tracking-widest text-emerald-400 uppercase">
+              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" /> OPEN
             </span>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Single Subtle Word Navigation */}
+          <nav className="hidden lg:flex items-center gap-7">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-xs font-extrabold uppercase tracking-wider text-white/80 hover:text-brand transition-colors"
+                className="text-xs font-black uppercase tracking-widest text-white/80 hover:text-brand transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Contact Badge & Action Button */}
+          {/* Action Button */}
           <div className="flex items-center gap-3">
             <a
               href="tel:+12145550199"
-              className="hidden sm:flex items-center gap-2 text-xs font-mono font-bold text-white/80 hover:text-brand"
+              className="hidden sm:flex items-center gap-2 text-xs font-mono font-black text-white/80 hover:text-brand"
             >
               <PhoneCall className="size-3.5 text-emerald-400" />
               <span>(214) 555-0199</span>
             </a>
             <Link
               href="#contact"
-              className="rounded-full bg-brand px-5 py-2.5 text-xs font-bold text-brand-foreground shadow-md transition-transform hover:scale-105"
+              className="rounded-full bg-brand px-5 py-2 text-xs font-black uppercase tracking-widest text-brand-foreground shadow-md transition-transform hover:scale-105"
             >
-              Book Studio Bay
+              BOOK
             </Link>
 
             {/* Mobile Menu Trigger */}
@@ -106,7 +107,7 @@ export function Navbar01() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between text-sm font-bold text-white/80 hover:text-brand py-2 border-b border-white/5"
+                  className="flex items-center justify-between text-xs font-black uppercase tracking-widest text-white/80 hover:text-brand py-2 border-b border-white/5"
                 >
                   <span>{item.label}</span>
                   <ChevronRight className="size-4 text-white/40" />
@@ -117,16 +118,16 @@ export function Navbar01() {
             <div className="pt-2 flex flex-col gap-2">
               <a
                 href="tel:+12145550199"
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white/10 text-xs font-bold text-white border border-white/20"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white/10 text-xs font-black text-white border border-white/20 uppercase tracking-widest"
               >
-                <PhoneCall className="size-3.5 text-emerald-400" /> Call (214) 555-0199
+                <PhoneCall className="size-3.5 text-emerald-400" /> CALL (214) 555-0199
               </a>
               <Link
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="flex w-full justify-center rounded-full bg-brand py-3 text-xs font-bold text-brand-foreground shadow-md"
+                className="flex w-full justify-center rounded-full bg-brand py-3 text-xs font-black text-brand-foreground shadow-md uppercase tracking-widest"
               >
-                Book Studio Bay Now
+                BOOK NOW
               </Link>
             </div>
           </div>
@@ -135,4 +136,3 @@ export function Navbar01() {
     </>
   )
 }
-

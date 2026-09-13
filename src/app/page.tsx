@@ -1,35 +1,28 @@
 import { LayoutSwitcher } from "@/components/layout-switcher"
-import { AboutSection } from "@/components/about-section"
-import { BrandsSection } from "@/components/brands-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
-import { GallerySection } from "@/components/gallery-section"
-import { HeroSection } from "@/components/hero-section"
 import { Navbar } from "@/components/navbar"
-import { PricingSection } from "@/components/pricing-section"
+import { HeroSection } from "@/components/hero-section"
+import { ServicesSection } from "@/components/services-section"
 import { ProcessSteps } from "@/components/process-steps"
 import { SectionHeading } from "@/components/section-heading"
-import { ServicesSection } from "@/components/services-section"
+import { BlogSection } from "@/components/blog-section"
+import { GalleryShowcase } from "@/components/gallery-showcase"
+import { RatingsSection } from "@/components/ratings-section"
+import { ContactSection } from "@/components/contact-section"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <div id="top" className="flex flex-1 flex-col">
+    <div id="top" className="flex flex-1 flex-col bg-[#0B0D0A]">
       <LayoutSwitcher />
       <Navbar />
 
-      {/* Hero */}
+      {/* 1. Hero */}
       <HeroSection />
 
-      {/* Brand partner */}
-      <BrandsSection />
-
-      {/* About */}
-      <AboutSection />
-
-      {/* Services */}
+      {/* 2. Services */}
       <ServicesSection />
 
-      {/* Process */}
+      {/* 3. How We Work (Process) */}
       <section id="process" className="relative overflow-hidden bg-secondary/60 py-10 md:py-14">
         <div
           aria-hidden
@@ -38,22 +31,24 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 lg:pl-24">
           <SectionHeading
             eyebrow="Process"
-            title="A simple, transparent workflow."
+            title="How We Work"
             className="max-w-xl"
           />
           <ProcessSteps />
         </div>
       </section>
 
-      {/* Gallery */}
-      <GallerySection />
+      {/* 4. Blog */}
+      <BlogSection />
 
-      {/* Pricing */}
-      <PricingSection />
+      {/* 5. Gallery */}
+      <GalleryShowcase />
 
-      {/* Contact */}
+      {/* 6. Ratings */}
+      <RatingsSection />
+
+      {/* 7. Finished */}
       <ContactSection />
-
       <Footer />
     </div>
   )
