@@ -14,7 +14,7 @@ export function Hero01() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover opacity-45"
       >
-        <source src="/videos/lv_0_20260905165108.mp4" type="video/mp4" />
+        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay Gradients */}

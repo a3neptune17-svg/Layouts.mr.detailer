@@ -46,7 +46,7 @@ export function HeroSection() {
         transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/lv_0_20260905165108.mp4" type="video/mp4" />
+        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
       </motion.video>
 
       <div aria-hidden className="bg-grain pointer-events-none absolute inset-0" />

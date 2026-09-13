@@ -14,7 +14,7 @@ export function Hero03() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover opacity-35"
       >
-        <source src="/videos/lv_0_20260905165108.mp4" type="video/mp4" />
+        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-gray-950/40" />

@@ -73,7 +73,7 @@ export function Process04() {
                     playsInline
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-60"
                   >
-                    <source src="/videos/lv_0_20260905165108.mp4" type="video/mp4" />
+                    <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
                   </video>
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />
                   <span className="absolute top-3 left-3 bg-black/80 backdrop-blur-md text-brand font-mono font-bold text-xs px-2.5 py-0.5 rounded-md border border-brand/30">

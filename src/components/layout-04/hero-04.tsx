@@ -14,7 +14,7 @@ export function Hero04() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover opacity-40 scale-105"
       >
-        <source src="/videos/lv_0_20260905165108.mp4" type="video/mp4" />
+        <source src="/videos/Video%20Project%202.mp4" type="video/mp4" />
       </video>
 
       {/* Cyber Dark Ambient Overlay & Glow */}
