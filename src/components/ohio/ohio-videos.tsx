@@ -13,7 +13,7 @@ export function OhioVideos() {
       <div className="mx-auto w-full">
         
         {/* Uniform Section Header Strip */}
-        <div className="px-8 lg:px-12 py-3.5 bg-[#111310] border-b border-white/10 flex items-center justify-between">
+        <div className="px-8 lg:px-12 py-4 bg-[#111310] border-b border-white/10 flex items-center justify-between">
           <span className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-[#E5FCA0]">
             WORKFLOW
           </span>
