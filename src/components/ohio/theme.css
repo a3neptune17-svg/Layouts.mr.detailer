@@ -1,0 +1,64 @@
+/* The preference applies only within the two client previews. */
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-control{position:absolute;top:104px;left:18px;z-index:35;display:flex;align-items:center;gap:8px;border:1px solid #e5fca04d;border-radius:30px;background:#1a1a18ed;color:#e5fca0;padding:9px 11px;font:500 9px/1.3 Arial,sans-serif;letter-spacing:.06em;cursor:pointer}
+.ohio-preview-two .ohio-theme-control{top:20px;left:24px}
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-control>span:first-child{font-size:17px}
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-control:focus-visible{outline:2px solid #e5fca0;outline-offset:4px}
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-track{width:25px;height:14px;border:1px solid currentColor;border-radius:12px;padding:2px}
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-track i{display:block;width:8px;height:8px;background:currentColor;border-radius:50%;transition:transform .2s}
+:is(.ohio-rebuild,.ohio-preview-two) .ohio-theme-control[aria-pressed=true] i{transform:translateX(10px)}
+.ohio-rebuild[data-theme=light]{background:#f4f3ee;color:#23251f;color-scheme:light}
+.ohio-rebuild[data-theme=light] :is(.or-intro,.or-accordions,.or-service-panel,.or-footer,.or-details-section){background:#f4f3ee;color:#23251f}
+.ohio-rebuild[data-theme=light] .or-service-panel{background:#eae9e2}
+.ohio-rebuild[data-theme=light] :is(.or-dialog,.or-info-dialog .or-dialog-top){background:#f4f3ee;color:#23251f}
+.ohio-rebuild[data-theme=light] :is(.or-menu-contact,.or-menu-contact strong,.or-menu-dialog .or-nav-row::before){color:#4b5042}
+.ohio-rebuild[data-theme=light] .or-menu-dialog .or-nav-row>a[aria-current]{color:#43541e}
+.ohio-rebuild[data-theme=light] :is(.or-eyebrow,.or-footer-bottom){color:#565c4c}
+.ohio-rebuild[data-theme=light] :is(.or-accordions details,.or-detail-list details,.or-footer-bottom,.or-info-dialog .or-details-section){border-color:#23251f26}
+.ohio-rebuild[data-theme=light] .or-contact{background:#e5fca0;color:#23251f}
+.ohio-rebuild[data-theme=light] .or-lime{background:#e5fca0;color:#23251f}
+.ohio-rebuild[data-theme=light] :is(.or-round,.or-pill){border-color:#60664e66}
+.ohio-rebuild[data-theme=light] .or-hero-panel:not(.or-lime){background:#f4f3eeed;color:#23251f}
+.ohio-rebuild[data-theme=light] .or-hero-panel p{color:#535a46}
+.ohio-rebuild[data-theme=light] .or-hero-panel .or-round{background:#23251f;color:#e5fca0}
+.ohio-rebuild[data-theme=light] .or-menu-dialog::backdrop{background:#23251f90}
+.ohio-preview-two[data-theme=light] .o31{--o31-ink:#141512;--o31-paper:#f4f3ee;--o31-line:#23251f26;background:#f4f3ee;color:#23251f;color-scheme:light}
+.ohio-preview-two[data-theme=light] .o31 :is(.o31-rail,.o31-menu-dialog,.o31-menu-inner,.o31-services,#o31-services,.o31-approach,.o31-namex,.o31-faq,.o31-contact,.o31-footer,.o31-paper){background:#f4f3ee!important;color:#23251f!important}
+.ohio-preview-two[data-theme=light] #o31-services :is(h2,h3,p,span,li,summary){color:#23251f}
+.ohio-preview-two[data-theme=light] #o31-services .o31-eyebrow{color:#5b614f!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-mini{color:#5b614f!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-service-short{color:#5b614f!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-service-list>details{border-top-color:#23251f28!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-service-list>details:last-child{border-bottom-color:#23251f28!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-toggle{border-color:#23251f38!important;background:#eae9e2;color:#23251f!important}
+.ohio-preview-two[data-theme=light] #o31-services details[open]>summary .o31-toggle{background:#23251f!important;color:#e5fca0!important;border-color:#23251f!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-service-body p{color:#383d31!important}
+.ohio-preview-two[data-theme=light] #o31-services .o31-service-body ul li{color:#404638!important}
+.ohio-preview-two[data-theme=light] #o31-services a.o31-text-link{color:#23251f!important;border-bottom:1px solid #23251f!important}
+.ohio-preview-two[data-theme=light] #o31-services a.o31-text-link:hover{color:#4c631e!important;border-bottom-color:#4c631e!important}
+.ohio-preview-two[data-theme=light] .o31 :is(.o31-eyebrow,.o31-mini,.o31-muted,.o31-rail-bottom p,.o31-small,.o31-story-copy,.o31-process-row p,.o31-contact-details span){color:#5b614f}
+.ohio-preview-two[data-theme=light] .o31 :is(.o31-tagline,.o31-desktop-nav a,.o31-quote-link,.o31-logo){color:#23251f}
+.ohio-preview-two[data-theme=light] .o31 :is(.o31-hero,.o31-hero .o31-eyebrow,.o31-hero .o31-round-link){color:#f7f7f2}
+.ohio-preview-two[data-theme=light] .o31 :is(.o31-button,.o31-directions a,.o31-studio){color:#23251f}
+.ohio-preview-two[data-theme=light] .o31 :is(input,select,textarea){background:#fff;color:#23251f;border-color:#23251f44}
+.ohio-preview-two[data-theme=light] .oa-product-film{background:#eae9e2;color:#23251f}
+:is(.ohio-rebuild,.ohio-preview-two)[data-theme=light] .ohio-theme-control{background:#f4f3ee;color:#23251f;border-color:#23251f44}
+@media(max-width:1180px){.ohio-rebuild .ohio-theme-control{top:25px;left:235px}.ohio-preview-two .ohio-theme-control{top:105px;left:20px}}
+@media(max-width:768px){.ohio-preview-two .ohio-theme-control{top:96px}.ohio-preview-two .ohio-preview-two-control{top:143px}.ohio-preview-two .o31-hero-top{padding-top:115px}}
+.ohio-rebuild .or-menu-toggle{position:relative}
+.ohio-rebuild[data-theme=light] .or-menu-dialog .or-nav-row::before{color:#5b614f}
+.ohio-rebuild[data-theme=light] .or-menu-dialog .or-submenu>summary{color:#5b614f}
+.ohio-rebuild[data-theme=light] .or-menu-dialog .or-dialog-top button{background:#eae9e2;color:#23251f}
+.ohio-rebuild[data-theme=light] a:hover{color:#4c631e}
+.ohio-preview-two .o31 .o31-logo{background:transparent;padding:0;border:0}
+.ohio-preview-two[data-theme=light] .o31 .oa-wordmark{color:#23251f}
+.ohio-preview-two .o31 .o31-quote-link{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ohio-preview-two .o31 .o31-quote-link>span{float:none}
+.ohio-preview-two .o31 .o31-quote-link small{width:100%;font-size:9px}
+@media(min-width:1024px){.ohio-preview-two .o31 .o31-rail{padding-top:85px}}
+.ohio-rebuild[data-theme=light] .or-rail{color:#23251f}
+.ohio-preview-two[data-theme=light] .o31 .o31-desktop-nav b{color:#5b6f30}
+.ohio-rebuild[data-theme=light] .or-rail :is(a,button):focus-visible{outline-color:#43541e}
+.ohio-rebuild[data-theme=light] .or-preview-selector{color:white}
+.ohio-rebuild[data-theme=light] .or-video-slot{color:white}
+.ohio-rebuild[data-theme=light] .or-video-slot .or-eyebrow{color:#ffffffb0}
+.ohio-rebuild[data-theme=light] .or-video-slot button{color:white;border-color:#ffffff80}

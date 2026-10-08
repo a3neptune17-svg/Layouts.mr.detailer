@@ -1,0 +1,34 @@
+/* Preview 2 keeps its editorial composition, with a more deliberate brand narrative. */
+.ohio-preview-two .oa-wordmark{display:block;font-size:32px;font-weight:800;line-height:.9;letter-spacing:-.07em;color:#f7f7f2}
+.ohio-preview-two .oa-wordmark>span{display:block;font-size:7px;letter-spacing:.08em;margin-top:12px}
+.ohio-preview-two .o31-logo{background:transparent;padding:0}
+.ohio-preview-two .o31-directions h2{font-size:clamp(24px,2.1vw,36px);max-width:390px}
+.ohio-preview-two .o31-directions small{display:block;font-size:10px;letter-spacing:.06em;margin-top:26px;max-width:270px}
+.ohio-preview-two .o31-directions a{transition:background .25s,transform .25s}
+.ohio-preview-two .o31-directions a:hover{background:#e5fca0;transform:translateY(-4px);color:#141512}
+.ohio-preview-two .oa-film{position:relative;overflow:hidden;min-height:460px;background:#22251e}
+.ohio-preview-two .oa-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ohio-preview-two .or-media-toggle{position:absolute;right:24px;top:24px;z-index:3;width:44px;height:44px;border-radius:50%;background:#141512d9;color:#e5fca0;border:1px solid #e5fca066}
+.ohio-preview-two .or-media-state{position:absolute;left:24px;top:24px;z-index:3;background:#141512d9;color:#e5fca0;border-radius:20px;padding:8px 14px;font-size:10px;letter-spacing:.12em}
+.ohio-preview-two .oa-product-film{display:grid;grid-template-columns:1fr 1.6fr;background:#1e211b;color:#f7f7f2}
+.ohio-preview-two .oa-product-film>div:first-child{padding:65px 40px;display:flex;flex-direction:column;justify-content:center;gap:28px}
+.ohio-preview-two .oa-product-film h2{font-size:clamp(36px,4vw,64px)}
+.ohio-preview-two .oa-product-film em{color:#b3cc75;font-style:normal}
+.ohio-preview-two .oa-questions{border-top:1px solid #14151230;border-bottom:1px solid #14151230;padding:40px 0;margin-bottom:50px;display:grid;grid-template-columns:1fr 2fr;gap:32px}
+.ohio-preview-two .oa-question{min-height:170px;animation:oa-answer-in .45s ease-out}
+.ohio-preview-two .oa-question h3{max-width:700px;margin-bottom:24px;font-size:clamp(27px,3vw,44px)}
+.ohio-preview-two .oa-question p{max-width:660px;line-height:1.8}
+.ohio-preview-two .oa-question-controls{grid-column:2;display:flex;gap:10px;align-items:center}
+.ohio-preview-two .oa-question-controls>span{margin-right:auto;font-size:12px;letter-spacing:.08em}
+.ohio-preview-two .oa-question-controls button{border:1px solid #14151245;border-radius:50%;width:42px;height:42px;background:transparent;color:inherit;cursor:pointer;transition:background .2s}
+.ohio-preview-two .oa-question-controls button:hover{background:#e5fca0}
+.ohio-preview-two .or-whatsapp-mark svg{width:25px;height:25px;fill:currentColor}
+.ohio-preview-two .o31-quote-link{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ohio-preview-two .o31-quote-link small{width:100%;font-size:9px}
+.ohio-preview-two .oa-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.ohio-preview-two .o31-rail{scrollbar-width:thin}
+.ohio-preview-two .o31-menu-dialog[open] .o31-menu-inner{animation:oa-answer-in .35s ease-out}
+@keyframes oa-answer-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1023px){.ohio-preview-two .oa-wordmark{font-size:23px}.ohio-preview-two .oa-wordmark>span{font-size:5px;margin-top:7px}.ohio-preview-two .o31-hero-top{padding-top:80px}.ohio-preview-two .ohio-preview-two-control{top:95px;right:25px}}
+@media(max-width:640px){.ohio-preview-two .oa-product-film{grid-template-columns:1fr}.ohio-preview-two .oa-product-film>div:first-child{padding:40px 24px}.ohio-preview-two .oa-film{min-height:330px}.ohio-preview-two .oa-questions{grid-template-columns:1fr;gap:25px}.ohio-preview-two .oa-question-controls{grid-column:1}.ohio-preview-two .oa-question{min-height:260px}.ohio-preview-two .o31-hero-top{padding-top:145px}.ohio-preview-two .ohio-preview-two-control{top:145px;left:20px;right:20px}.ohio-preview-two .o31-directions small{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.ohio-preview-two *{animation:none!important;transition:none!important}}

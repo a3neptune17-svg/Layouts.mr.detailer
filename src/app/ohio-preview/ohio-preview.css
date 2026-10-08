@@ -1,0 +1,8 @@
+.ohio-client-preview{background:#1a1a18;color:white;min-height:100svh}
+.ohio-preview-two{position:relative;background:#141512}
+.ohio-preview-two-control{position:absolute;top:24px;right:30px;z-index:30;display:flex;align-items:center;gap:20px;color:#e5fca0;font:500 12px/1.4 Arial,sans-serif;letter-spacing:.07em}
+.ohio-preview-two-control a{background:#e5fca0;color:#141512;padding:12px 20px;border-radius:28px;text-decoration:none;letter-spacing:0;font-size:14px;transition:background .2s}
+.ohio-preview-two-control a:hover{background:#fff}
+.ohio-preview-two-control a:focus-visible{outline:2px solid white;outline-offset:5px}
+.ohio-preview-two .o31-hero-top{padding-top:70px}
+@media(max-width:768px){.ohio-preview-two-control{top:110px;left:20px;right:20px;justify-content:space-between;gap:10px}.ohio-preview-two-control a{font-size:12px;padding:10px 14px}.ohio-preview-two .o31-hero-top{padding-top:80px}}
