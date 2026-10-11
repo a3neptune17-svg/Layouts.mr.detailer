@@ -7,6 +7,8 @@ import "./refinement.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--or-font" });
 
+import "@/components/ohio/client-refinements.css";
+
 export const metadata: Metadata = {
   title: "MR. DETAILER — Ohio Client Preview",
   description: "Compare the two preserved Ohio layout variations for MR. DETAILER.",

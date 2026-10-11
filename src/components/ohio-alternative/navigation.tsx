@@ -1,22 +1,22 @@
 "use client";
 
-import { WhatsAppMark } from "../ohio/rebuild-interactions";
+import { navigation as clientNavigation, FourLinesMenuIcon, WhatsAppMark } from "../ohio/rebuild-interactions";
 import { useRef, useState } from "react";
-import { navigation, quoteUrl } from "./content";
+import { quoteUrl } from "./content";
 
 export function Navigation() {
   const menu = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
   function close() {
     menu.current?.close();
   }
-  const links = navigation.map(([label, href], index) => (
-    <a key={href} href={href} onClick={close}>
-      <span>0{index + 1}</span>
-      {label}
-      <b aria-hidden="true">↗</b>
-    </a>
+  const links = clientNavigation.map((item, index) => (
+    <div className="oa-nav-group" key={item.label} onMouseEnter={() => setExpanded(item.label)} onMouseLeave={() => setExpanded(null)} onFocus={() => setExpanded(item.label)}>
+      <div className="oa-nav-main"><a href={item.href} onClick={close}><span>0{index + 1}</span>{item.label}</a><button type="button" aria-label={`Expand ${item.label}`} aria-expanded={expanded === item.label} onClick={() => setExpanded(item.label)}>{item.label === "OWN A STUDIO" ? "+" : "⌄"}</button></div>
+      {expanded === item.label && <div className="oa-nav-submenu">{item.children.map(([label, href]) => <a key={label} href={href} onClick={close}>{label}</a>)}</div>}
+    </div>
   ));
   return (
     <>
@@ -62,7 +62,7 @@ export function Navigation() {
             setOpen(true);
           }}
         >
-          Menu <span aria-hidden="true">☰</span>
+          <FourLinesMenuIcon/>
         </button>
       </header>
       <dialog

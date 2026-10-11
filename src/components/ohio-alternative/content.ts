@@ -33,7 +33,7 @@ export const services = [
   },
   {
     id: "coatings",
-    title: "Coating",
+    title: "Coatings",
     short: "Deep, Long-Term Protection",
     text: "Compare Ceramic, Graphene and Borophene coating options with your studio. Preparation, product selection and aftercare are part of the conversation.",
     items: ["Ceramic Coatings", "Graphene Coatings", "Borophene Coatings"],

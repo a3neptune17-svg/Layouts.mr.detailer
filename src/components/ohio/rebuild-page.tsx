@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { clientConfig, ohioPage } from "./client-config";
+import { ClientFooter } from "./client-footer";
 import { ThemeControl } from "./theme-control";
 import { imagePath, processSteps, serviceGroups, whatsapp } from "./rebuild-data";
-import { ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, WhatsAppMark } from "./icons";
+import { ArrowRight, ArrowUpRight, WhatsAppMark } from "./icons";
 import {
   RebuildGallery,
   RebuildInfo,
@@ -28,7 +30,7 @@ function SectionIntro({ label, title, href, action }: { label: string; title: Re
 }
 
 export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   return (
     <div className={`ohio-rebuild${previewOne ? " or-preview-one" : ""}`} data-theme={theme} id="home">
@@ -36,7 +38,7 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
       <a className="or-skip" href="#main">
         Skip to content
       </a>
-      <RebuildNavigation previewOne={previewOne} />
+      <RebuildNavigation />
 
       <main className="or-main" id="main">
         <section className="or-hero" id="hero" aria-label="MR. DETAILER studio">
@@ -55,37 +57,30 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
             priority
           />
           <div className="or-hero-panels">
-            <a className="or-hero-panel" href="#ppf">
-              <p>PAINT PROTECTION</p>
-              <h1>
-                INVISIBLE PROTECTION,
-                <br />
-                MAXIMUM CONFIDENCE
-              </h1>
+            <a className="or-hero-panel" href={ohioPage("ppf")}>
+              <p>PROTECTION</p>
+              <h1>Paint Protection Film</h1>
+              <p className="or-product-line">{clientConfig.ppfProducts.join(" · ")}</p>
+              <strong className="or-panel-subline">INVISIBLE PROTECTION, MAXIMUM CONFIDENCE.</strong>
               <span className="or-round" aria-hidden="true">
                 <ArrowUpRight className="or-arrow" />
               </span>
             </a>
-            <a className="or-hero-panel" href="#coatings">
-              <p>COATING</p>
-              <h2>
-                CERAMIC
-                <br />
-                BOROPHENE
-                <br />
-                GRAPHENE
-              </h2>
-              <strong className="or-panel-subline">DEEP, LONG-TERM PROTECTION</strong>
+            <a className="or-hero-panel" href={ohioPage("coatings")}>
+              <p>SURFACE CARE</p>
+              <h2>Coatings</h2>
+              <p className="or-product-line">Ceramic · Borophene · Graphene</p>
+              <strong className="or-panel-subline">DEEP GLOSS, LONG-TERM PROTECTION</strong>
               <span className="or-round" aria-hidden="true">
                 <ArrowUpRight className="or-arrow" />
               </span>
             </a>
-            <a className="or-hero-panel or-lime" href="#auto-mods">
+            <a className="or-hero-panel or-lime" href={ohioPage("auto-mods")}>
               <p>AUTO MODS</p>
               <h2>
-                DESIGN, BUILD,
+                DESIGN. BUILD.
                 <br />
-                PERFECTED
+                PERFECTED.
               </h2>
               <strong className="or-panel-subline">FROM LIGHTING UPGRADES TO PERFORMANCE TUNING</strong>
               <span className="or-round" aria-hidden="true">
@@ -99,17 +94,11 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
           previewOne={previewOne}
           intro={
             <div className="or-intro or-namex-intro">
-              <p className="or-eyebrow">ABOUT NAMEX</p>
+              <h2>ABOUT NAMEX</h2>
               <div>
-                <h2>
-                  Protection film.
-                  <br />
-                  Performance, protected.
-                </h2>
-                <p className="or-intro-copy">Explore NameX paint protection film with the MR. DETAILER team.</p>
-                <a className="or-pill" href="#namex">
-                  Explore NameX <ArrowRight className="or-arrow-inline" />
-                </a>
+                <Image className="client-namex-logo" src={clientConfig.namexLogo} alt="NameX" width={240} height={130}/>
+                <p className="or-intro-copy">Know what protects your car. A beautiful finish deserves thoughtful protection. Explore NameX at Mr. Detailer.</p>
+                {clientConfig.namexUrl && <a className="or-pill" href={clientConfig.namexUrl} target="_blank" rel="noopener noreferrer">Explore NameX <ArrowRight className="or-arrow-inline"/></a>}
               </div>
             </div>
           }
@@ -120,12 +109,12 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
             label="Protection Science · Meet Our Team"
             title={
               <>
-                Protection science,
+                WE LISTEN. WE ASSESS.
                 <br />
-                with people behind it.
+                WE CARE FOR THE DETAILS.
               </>
             }
-            href="#connect"
+            href={ohioPage("meet-the-team")}
             action="Meet Our Team"
           />
           <div className="or-accordions">
@@ -161,7 +150,7 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
               <br />
               surface.
             </h2>
-            <a className="or-care-link" href="#car-care">
+            <a className="or-care-link" href={ohioPage("car-care")}>
               Explore Car Care <ArrowUpRight className="or-inline-arrow" />
             </a>
           </div>
@@ -177,7 +166,7 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
                 beyond the studio.
               </>
             }
-            href="#warranty"
+            href={ohioPage("warranty")}
             action="Warranty Hub"
           />
           <div className="or-service-panel">
@@ -187,40 +176,41 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
               <br />
               Your studio.
             </h2>
-            <a className="or-round" href="#join" aria-label="Own a Studio">
+            <a className="or-round" href={ohioPage("own-a-studio")} aria-label="Own a Studio">
               <ArrowUpRight className="or-arrow" />
             </a>
             <ul>
               <li>
-                <a href="#join">– Share your location</a>
+                <a href={ohioPage("own-a-studio")}>– Share your location</a>
               </li>
               <li>
-                <a href="#join">– Tell us your plans</a>
+                <a href={ohioPage("own-a-studio")}>– Tell us your plans</a>
               </li>
               <li>
-                <a href="#join">– Meet the team</a>
+                <a href={ohioPage("own-a-studio")}>– Meet the team</a>
               </li>
             </ul>
           </div>
           <div className="or-service-panel or-lime">
             <p className="or-eyebrow">CUSTOMIZATION</p>
             <h2>
-              Your vehicle.
+              YOUR CAR.
               <br />
-              Your character.
+              YOUR SIGNATURE.
             </h2>
-            <a className="or-round" href="#auto-mods" aria-label="Explore customization">
+            <p>YOUR STYLE. YOUR CHOICE.</p>
+            <a className="or-round" href={ohioPage("auto-mods")} aria-label="Explore customization">
               <ArrowUpRight className="or-arrow" />
             </a>
             <ul>
               <li>
-                <a href="#auto-mods">– Denting &amp; Painting</a>
+                <a href={ohioPage("auto-mods")}>– Denting &amp; Painting</a>
               </li>
               <li>
-                <a href="#auto-mods">– Car Tuning</a>
+                <a href={ohioPage("auto-mods")}>– Car Tuning</a>
               </li>
               <li>
-                <a href="#auto-mods">– Accessories &amp; Body Kits</a>
+                <a href={ohioPage("auto-mods")}>– Accessories &amp; Body Kits</a>
               </li>
             </ul>
           </div>
@@ -228,7 +218,7 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
 
         <RebuildStory />
 
-        <VideoPlaceholders previewOne={previewOne} />
+        <VideoPlaceholders />
 
         <RebuildInfo>
           <div className="or-details-section">
@@ -263,13 +253,13 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
                 <summary>About NameX</summary>
                 <div className="or-namex">
                   <Image
-                    src={imagePath("Namex white background only.png")}
-                    alt="NameX paint protection film packaging"
+                    src={clientConfig.namexLogo}
+                    alt="NameX"
                     width={440}
                     height={440}
                   />
                   <div>
-                    <h3>NameX Paint Protection Film</h3>
+                    <h3>ABOUT NAMEX</h3>
                     <p>
                       Explore NameX with the studio team. Ask about available film options, installation and
                       product-specific care.
@@ -321,7 +311,7 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
               </details>
               <details id="latest-updates">
                 <summary>Latest Updates</summary>
-                <p>Contact the Ludhiana studio for current availability, product information and studio updates.</p>
+                <p>Contact the studio for current availability, product information and studio updates.</p>
               </details>
               <details id="faqs">
                 <summary>Frequently asked questions</summary>
@@ -341,14 +331,12 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
 
         <section className="or-contact" id="connect">
           <p>
-            Ready for a fresh finish?
-            <br />
-            Let’s talk.
+            We would love to hear from you.
           </p>
           <h2>
-            Welcome back
+            BOOK A STUDIO
             <br />
-            to perfection.
+            INSPECTION
           </h2>
           <a
             className="or-pill or-lime"
@@ -357,65 +345,11 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
             rel="noreferrer"
             aria-label="Contact MR. DETAILER on WhatsApp"
           >
-            <WhatsAppMark /> <ArrowUpRight className="or-arrow" />
+            <WhatsAppMark /> DROP US A LINE <ArrowUpRight className="or-arrow" />
           </a>
         </section>
 
-        <footer className="or-footer">
-          <div className="or-footer-grid">
-            <div>
-              <h3>Contact</h3>
-              <a href="tel:+919779397773">+91 97793 97773</a>
-              <a href={whatsapp} target="_blank" rel="noreferrer">
-                WhatsApp <ArrowUpRight className="or-inline-arrow" />
-              </a>
-              <p>
-                Email details available
-                <br />
-                from the studio.
-              </p>
-            </div>
-            <div>
-              <h3>Visit us</h3>
-              <address>
-                SCF 1, opposite Gurudwara Road,
-                <br />
-                I-Block Market, Sarabha Nagar,
-                <br />
-                Ludhiana, Punjab 141001
-              </address>
-            </div>
-            <div>
-              <h3>Working hours</h3>
-              <p>
-                Call the studio to confirm
-                <br />
-                hours and appointment availability.
-              </p>
-              <a href="tel:+919779397773">
-                Book an Appointment <ArrowUpRight className="or-inline-arrow" />
-              </a>
-            </div>
-            <div>
-              <h3>
-                The next chapter
-                <br />
-                starts with your vehicle.
-              </h3>
-              <a className="or-pill" href={whatsapp} target="_blank" rel="noreferrer">
-                Connect With Us <ArrowUpRight className="or-inline-arrow" />
-              </a>
-            </div>
-          </div>
-          <div className="or-footer-wordmark">MR. DETAILER</div>
-          <div className="or-footer-bottom">
-            <p>© {new Date().getFullYear()} MR. DETAILER</p>
-            <span>The Boss of Detailers</span>
-            <a href="#home">
-              Back to top <ArrowUp className="or-inline-arrow" />
-            </a>
-          </div>
-        </footer>
+        <ClientFooter />
       </main>
     </div>
   );

@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { clientConfig, ohioPage } from "./client-config";
+import { useCarousel } from "./use-carousel";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { imagePath, projects, studioQuestions, videoSlots, whatsapp } from "./rebuild-data";
 
@@ -16,82 +19,166 @@ export interface NavItem {
 
 export const navigation: NavItem[] = [
   {
-    label: "HOME",
-    href: "#home",
-    tagline: "Studio Overview & Craft",
-    children: [
-      ["Overview", "#home"],
-      ["About Us", "#process"],
-      ["Our Process", "#process"],
-      ["Gallery", "#work"],
-    ],
+    "label": "HOME",
+    "href": "/ohio-preview",
+    "tagline": "Studio Overview & Craft",
+    "children": [
+      [
+        "Overview",
+        "/ohio-preview"
+      ],
+      [
+        "About Us",
+        "/ohio-preview/explore/about-us"
+      ],
+      [
+        "Our Process",
+        "/ohio-preview/explore/process"
+      ],
+      [
+        "Gallery",
+        "/ohio-preview/explore/gallery"
+      ]
+    ]
   },
   {
-    label: "OUR SERVICES",
-    href: "#services",
-    tagline: "Precision Surface Treatments",
-    children: [
-      ["Coating", "#coatings"],
-      ["PPF", "#ppf"],
-      ["Detailing Packages", "#detailing"],
-      ["Auto Mods", "#auto-mods"],
-      ["Car Care Packages", "#car-care"],
-    ],
+    "label": "OUR SERVICES",
+    "href": "/ohio-preview/explore/services",
+    "tagline": "Precision Surface Treatments",
+    "children": [
+      [
+        "Coatings",
+        "/ohio-preview/explore/coatings"
+      ],
+      [
+        "Paint Protection Film / PPF",
+        "/ohio-preview/explore/ppf"
+      ],
+      [
+        "Detailing Packages",
+        "/ohio-preview/explore/detailing"
+      ],
+      [
+        "Auto Mods",
+        "/ohio-preview/explore/auto-mods"
+      ],
+      [
+        "Car Care Packages",
+        "/ohio-preview/explore/car-care"
+      ]
+    ]
   },
   {
-    label: "SHOP",
-    href: "#shop",
-    tagline: "Curated Studio Products & Kits",
-    children: [
-      ["Exterior Care", "#shop"],
-      ["Interior Care", "#shop"],
-      ["Accessories", "#shop"],
-      ["Detailing Kits", "#shop"],
-      ["Product Guide", "#shop"],
-    ],
+    "label": "SHOP",
+    "href": "/ohio-preview/explore/shop",
+    "tagline": "Curated Studio Products & Kits",
+    "children": [
+      [
+        "Exterior Care",
+        "/ohio-preview/explore/exterior-care"
+      ],
+      [
+        "Interior Care",
+        "/ohio-preview/explore/interior-care"
+      ],
+      [
+        "Accessories",
+        "/ohio-preview/explore/accessories"
+      ],
+      [
+        "Detailing Kits",
+        "/ohio-preview/explore/detailing-kits"
+      ],
+      [
+        "Product Guide",
+        "/ohio-preview/explore/product-guide"
+      ]
+    ]
   },
   {
-    label: "WARRANTY HUB",
-    href: "#warranty",
-    tagline: "Long-term Vehicle Assurance",
-    children: [
-      ["Check Your Warranty", "#warranty"],
-      ["Maintenance Schedule", "#warranty"],
-      ["Annual Inspection", "#warranty"],
-    ],
+    "label": "WARRANTY HUB",
+    "href": "/ohio-preview/explore/warranty",
+    "tagline": "Care beyond the studio",
+    "children": [
+      [
+        "Check Your Warranty",
+        "/ohio-preview/explore/warranty"
+      ],
+      [
+        "Maintenance Schedule",
+        "/ohio-preview/explore/maintenance"
+      ],
+      [
+        "Annual Inspection",
+        "/ohio-preview/explore/annual-inspection"
+      ]
+    ]
   },
   {
-    label: "OWN A STUDIO",
-    href: "#join",
-    tagline: "Partnership & Expansion",
-    children: [
-      ["Partner With Us", "#join"],
-      ["Studio Opportunity", "#join"],
-    ],
+    "label": "OWN A STUDIO",
+    "href": "/ohio-preview/explore/own-a-studio",
+    "tagline": "Partnership & Expansion",
+    "children": [
+      [
+        "Meet the Team",
+        "/ohio-preview/explore/meet-the-team"
+      ],
+      [
+        "Meet Us",
+        "/ohio-preview/explore/meet-us"
+      ]
+    ]
   },
   {
-    label: "JOURNAL",
-    href: "#blog",
-    tagline: "Detailing Tips & Guides",
-    children: [
-      ["Detailing Tips", "#blog"],
-      ["Product Guide", "#shop"],
-      ["Latest Updates", "#latest-updates"],
-    ],
+    "label": "JOURNAL",
+    "href": "/ohio-preview/explore/journal",
+    "tagline": "Detailing Tips & Guides",
+    "children": [
+      [
+        "Detailing Tips",
+        "/ohio-preview/explore/detailing-tips"
+      ],
+      [
+        "Product Guide",
+        "/ohio-preview/explore/product-guide"
+      ],
+      [
+        "Latest Updates",
+        "/ohio-preview/explore/latest-updates"
+      ]
+    ]
   },
   {
-    label: "CONNECT",
-    href: "#connect",
-    tagline: "Reach Mr. Detailer Directly",
-    children: [
-      ["Book an Appointment", "#connect"],
-      ["Call Us", "tel:+919779397773"],
-      ["WhatsApp", "https://wa.me/919779397773"],
-      ["Email", "mailto:studio@mrdetailer.in"],
-      ["Visiting Us", "#connect"],
-      ["Working Hours", "#connect"],
-    ],
-  },
+    "label": "CONNECT",
+    "href": "/ohio-preview/explore/connect",
+    "tagline": "Reach Mr. Detailer Directly",
+    "children": [
+      [
+        "Book an Appointment",
+        "/ohio-preview/explore/booking"
+      ],
+      [
+        "Call Us",
+        "tel:+917693606006"
+      ],
+      [
+        "WhatsApp",
+        "https://wa.me/919779397773"
+      ],
+      [
+        "Email",
+        "mailto:care@mrdetailer.co.in"
+      ],
+      [
+        "Visiting Us",
+        "/ohio-preview/explore/visiting"
+      ],
+      [
+        "Working Hours",
+        "/ohio-preview/explore/working-hours"
+      ]
+    ]
+  }
 ];
 
 function goToSection(event: React.MouseEvent<HTMLAnchorElement>, close?: () => void) {
@@ -142,16 +229,15 @@ function Navigation({
   const [closingItem, setClosingItem] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Close rail hover popup if main menu is opened
-  useEffect(() => {
-    if (isMainMenuOpen) {
-      setHovered(null);
-      setClosingItem(null);
-    }
-  }, [isMainMenuOpen]);
+  const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (exitTimer.current) clearTimeout(exitTimer.current);
+  }, []);
 
   const handleMouseEnter = (label: string) => {
     if (timerRef.current) clearTimeout(timerRef.current);
+    if (exitTimer.current) clearTimeout(exitTimer.current);
     if (isMainMenuOpen) {
       closeMainMenu?.();
     }
@@ -163,7 +249,7 @@ function Navigation({
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setClosingItem(hovered);
-      setTimeout(() => {
+      exitTimer.current = setTimeout(() => {
         setHovered(null);
         setClosingItem(null);
       }, 200);
@@ -172,6 +258,7 @@ function Navigation({
 
   const handlePopupEnter = () => {
     if (timerRef.current) clearTimeout(timerRef.current);
+    if (exitTimer.current) clearTimeout(exitTimer.current);
     setClosingItem(null);
   };
 
@@ -187,6 +274,8 @@ function Navigation({
             key={item.label}
             onMouseEnter={() => handleMouseEnter(item.label)}
             onMouseLeave={handleMouseLeave}
+            onFocus={() => handleMouseEnter(item.label)}
+            onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) handleMouseLeave(); }}
           >
             <a
               href={item.href}
@@ -195,7 +284,7 @@ function Navigation({
               aria-expanded={isHovered}
               onClick={(event) => goToSection(event, close)}
             >
-              <span className="or-nav-label">{item.label}</span>
+              <span className="or-nav-label">{item.label}{item.label === "OWN A STUDIO" && <span aria-hidden="true"> +</span>}</span>
               <span className="or-nav-accent-bar" aria-hidden="true" />
             </a>
 
@@ -242,22 +331,23 @@ function Navigation({
   );
 }
 
-export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean }) {
+export function RebuildNavigation() {
   const popupRef = useRef<HTMLDivElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
   const [hoveredMenuRow, setHoveredMenuRow] = useState<string | null>(null);
-  const [active, setActive] = useState("#home");
-
-  // Open with smooth entrance
-  const openMenu = (pinned = false) => {
-    if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    setClosing(false);
-    setMenuOpen(true);
-    if (pinned) setIsPinned(true);
-  };
+  const pathname = usePathname();
+  const [active, setActive] = useState(pathname);
+  const [overHero, setOverHero] = useState(pathname === "/ohio-preview" || pathname === "/ohio");
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) => setOverHero(entry.isIntersecting), { threshold: 0.5 });
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
 
   // Close with smooth exit transition
   const closeMenu = () => {
@@ -319,6 +409,8 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
     }
   };
 
+  useEffect(() => () => { if (hoverTimer.current) clearTimeout(hoverTimer.current); }, []);
+
   // Close on Escape or click outside
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -343,16 +435,16 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
 
   // Active section scroll tracking via IntersectionObserver
   useEffect(() => {
-    const sectionIds = ["home", "work", "process", "car-care-photo", "services", "blog", "resources", "connect"];
+    const sectionIds = ["hero", "work", "process", "car-care-photo", "services", "blog", "resources", "connect"];
     const sectionMap: Record<string, string> = {
-      home: "#home",
-      work: "#work",
-      process: "#process",
-      "car-care-photo": "#services",
-      services: "#services",
-      blog: "#blog",
-      resources: "#blog",
-      connect: "#connect",
+      hero: "/ohio-preview",
+      work: "/ohio-preview",
+      process: "/ohio-preview",
+      "car-care-photo": ohioPage("services"),
+      services: ohioPage("services"),
+      blog: ohioPage("journal"),
+      resources: ohioPage("journal"),
+      connect: ohioPage("connect"),
     };
 
     const observers: IntersectionObserver[] = [];
@@ -397,7 +489,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
 
   return (
     <>
-      <header className="or-rail">
+      <header className="or-rail" data-over-hero={overHero}>
         <div
           className="or-brand-row"
           onMouseEnter={handleMouseEnter}
@@ -413,7 +505,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
           >
             <FourLinesMenuIcon className="or-menu-icon" isOpen={menuOpen} />
           </button>
-          <a className="or-brand" href="#home" aria-label="MR. DETAILER home">
+          <a className="or-brand" href="/ohio-preview" aria-label="MR. DETAILER home">
             MR.
             <br />
             DETAILER<span>THE BOSS OF DETAILERS</span>
@@ -421,6 +513,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
         </div>
 
         <Navigation
+          key={menuOpen ? "open" : "closed"}
           active={active}
           isMainMenuOpen={menuOpen}
           closeMainMenu={closeMenu}
@@ -469,6 +562,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
                 key={item.label}
                 onMouseEnter={() => setHoveredMenuRow(item.label)}
                 onMouseLeave={() => setHoveredMenuRow(null)}
+                onFocus={() => setHoveredMenuRow(item.label)}
               >
                 <div className="or-popup-row-main">
                   <span className="or-popup-number">{String(index + 1).padStart(2, "0")}</span>
@@ -481,15 +575,14 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
                     {item.label}
                   </a>
                   {item.children.length > 0 && (
-                    <span className="or-popup-hover-badge" aria-hidden="true">
-                      {item.children.length} options ▾
-                    </span>
+                    <button type="button" className="or-popup-hover-badge" aria-label={`Expand ${item.label}`} aria-expanded={hoveredMenuRow === item.label} onClick={() => setHoveredMenuRow(item.label)}>{item.label === "OWN A STUDIO" ? "+" : "▾"}</button>
                   )}
                 </div>
                 {item.children.length > 0 && (
                   <div
                     className={`or-popup-sub-items${hoveredMenuRow === item.label ? " is-expanded" : ""}`}
                     aria-label={`${item.label} submenu`}
+                    inert={hoveredMenuRow !== item.label}
                   >
                     {item.children.map(([subLabel, subHref], subIdx) => (
                       <a
@@ -514,7 +607,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
           <div className="or-menu-popup-footer">
             <div className="or-popup-contact-item">
               <strong>Studio Phone</strong>
-              <a href="tel:+919779397773">+91 97793 97773</a>
+              <a href={clientConfig.telephone}>{clientConfig.phone}</a>
             </div>
             <div className="or-popup-contact-item">
               <strong>WhatsApp Direct</strong>
@@ -524,7 +617,7 @@ export function RebuildNavigation({ previewOne = false }: { previewOne?: boolean
             </div>
             <div className="or-popup-contact-item">
               <strong>Studio Location</strong>
-              <p>SCF 1, Sarabha Nagar, Ludhiana</p>
+              <p>{clientConfig.location || "Contact us before visiting."}</p>
             </div>
           </div>
         </aside>
@@ -556,95 +649,10 @@ export function RebuildInfo({ children }: { children: ReactNode }) {
   );
 }
 
-export function RebuildGallery({ intro, previewOne = false }: { intro: ReactNode; previewOne?: boolean }) {
-  const dialog = useRef<HTMLDialogElement>(null);
-  const [index, setIndex] = useState(0);
-  const [galleryOpen, setGalleryOpen] = useState(false);
-  const active = projects[index];
-  const change = (direction: number) =>
-    setIndex((current) => (current + direction + projects.length) % projects.length);
-
-  return (
-    <section id="work" className="or-projects" aria-label="Our work">
-      {intro}
-      {projects.map((project, position) => (
-        <div key={project.title} className={`or-project or-project-${position}`}>
-          {project.video ? (
-            <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
-          ) : (
-            <Image
-              src={imagePath(project.image)}
-              alt={project.alt}
-              fill
-              sizes={
-                position === 3
-                  ? "(max-width:1180px) 100vw, 80vw"
-                  : "(max-width:768px) 100vw, (max-width:1180px) 66vw, 55vw"
-              }
-            />
-          )}
-          <button
-            className="or-project-hit"
-            aria-label={`View ${project.title}`}
-            onClick={() => {
-              setIndex(position);
-              setGalleryOpen(true);
-              dialog.current?.showModal();
-            }}
-          >
-            <span className="or-project-open" aria-hidden="true">
-              <ArrowUpRight className="or-arrow" />
-            </span>
-          </button>
-          <span className="or-project-caption">
-            <strong>{project.title}</strong>
-            <span>{project.category}</span>
-          </span>
-        </div>
-      ))}
-      <dialog
-        ref={dialog}
-        className="or-dialog or-lightbox"
-        aria-label="Studio image gallery"
-        onClose={() => setGalleryOpen(false)}
-        onKeyDown={(event) => {
-          if (event.key === "ArrowRight") change(1);
-          if (event.key === "ArrowLeft") change(-1);
-        }}
-        onClick={(event) => {
-          if (event.target === event.currentTarget) dialog.current?.close();
-        }}
-      >
-        <div className="or-dialog-top">
-          <span aria-live="polite">
-            {index + 1} / {projects.length} — {active.title}
-          </span>
-          <button className="or-round" aria-label="Close gallery" onClick={() => dialog.current?.close()}>
-            ×
-          </button>
-        </div>
-        {galleryOpen &&
-          (active.video ? (
-            <div className="or-lightbox-image">
-              <video src={active.video} controls playsInline preload="none" aria-label={active.alt} />
-            </div>
-          ) : (
-            <div className="or-lightbox-image">
-              <Image src={imagePath(active.image)} alt={active.alt} fill sizes="90vw" />
-            </div>
-          ))}
-        <div className="or-gallery-controls">
-          <button className="or-pill" onClick={() => change(-1)} aria-label="Previous image">
-            <ArrowLeft className="or-arrow-inline" /> Previous
-          </button>
-          <span>{active.category}</span>
-          <button className="or-pill" onClick={() => change(1)} aria-label="Next image">
-            Next <ArrowRight className="or-arrow-inline" />
-          </button>
-        </div>
-      </dialog>
-    </section>
-  );
+export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boolean }) {
+  return <section id="work" className="or-projects" aria-label="Our work">{intro}{projects.map((project, position) => <div key={project.title} className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}>
+    {project.video ? <>{position === 0 && clientConfig.namexUrl ? <a className="or-namex-media-link" href={clientConfig.namexUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit NameX"><LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt}/></a> : <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt}/>}</> : <><Image src={imagePath(project.image)} alt={project.alt} fill sizes="(max-width:768px) 100vw, 50vw"/><a className="or-project-hit" href={ohioPage(position === 2 ? "shop" : "detailing")} aria-label={`Explore ${project.title}`}><span className="or-project-open" aria-hidden="true"><ArrowUpRight className="or-arrow"/></span></a><span className="or-project-caption"><strong>{project.title}</strong><span>{project.category}</span></span></>}
+  </div>)}</section>;
 }
 
 export function LocalVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
@@ -685,34 +693,18 @@ export function LocalVideo({ src, poster, label }: { src: string; poster: string
         loop
         playsInline
         preload="none"
-        aria-label={label}
+        aria-label={`${label}. Press Space to pause or continue playback.`}
+        tabIndex={0}
+        onKeyDown={event => { if (event.key === " ") { event.preventDefault(); setPaused(current => !current); } }}
+        onClick={() => setPaused(current => !current)}
       />
-      <span className="or-media-state" aria-hidden="true">
-        {paused ? "PAUSED" : "FILM"}
-      </span>
-      <button
-        className="or-media-toggle"
-        aria-label={`${paused ? "Resume" : "Pause"} ${label.includes("NameX") ? "NameX video" : "product video"}`}
-        onClick={() => setPaused((current) => !current)}
-      >
-        {paused ? "▶" : "Ⅱ"}
-      </button>
     </>
   );
 }
 
 export function RebuildStory() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const { index, paused, setPaused, setHeld, progress, change } = useCarousel(studioQuestions.length);
   const item = studioQuestions[index];
-
-  useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = setInterval(() => {
-      if (!document.hidden) setIndex((current) => (current + 1) % studioQuestions.length);
-    }, 6500);
-    return () => clearInterval(timer);
-  }, [paused]);
 
   return (
     <section className="or-story or-image-band" id="blog" aria-label="Blogs — rotating questions and answers">
@@ -722,7 +714,8 @@ export function RebuildStory() {
         fill
         sizes="(max-width:1180px) 100vw, 80vw"
       />
-      <div className="or-story-card or-lime">
+      <div className="or-story-card or-lime" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setHeld(false); }}>
+        <div className="client-carousel-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }}/></div>
         <span className="or-tag">BLOGS</span>
         <div key={index} className="or-qa-copy">
           <p className="or-eyebrow">Detailing Tips · Product Guide · Latest Updates</p>
@@ -733,7 +726,7 @@ export function RebuildStory() {
           <button
             className="or-round"
             aria-label="Previous question"
-            onClick={() => setIndex((current) => (current + studioQuestions.length - 1) % studioQuestions.length)}
+            onClick={() => change(-1)}
           >
             <ArrowLeft className="or-arrow" />
           </button>
@@ -743,16 +736,16 @@ export function RebuildStory() {
           <button
             className="or-round"
             aria-label="Next question"
-            onClick={() => setIndex((current) => (current + 1) % studioQuestions.length)}
+            onClick={() => change(1)}
           >
             <ArrowRight className="or-arrow" />
           </button>
           <button
             className="or-round"
-            aria-label={paused ? "Resume questions" : "Pause questions"}
+            aria-label={paused ? "Start automatic rotation" : "Pause automatic rotation"}
             onClick={() => setPaused((current) => !current)}
           >
-            {paused ? "▶" : "Ⅱ"}
+            {paused ? "Auto" : "Pause"}
           </button>
         </div>
       </div>
@@ -760,7 +753,7 @@ export function RebuildStory() {
   );
 }
 
-export function VideoPlaceholders({ previewOne = false }: { previewOne?: boolean }) {
+export function VideoPlaceholders() {
   return (
     <section className="or-resources or-thirds or-video-slots" id="resources" aria-label="Studio journal articles">
       {videoSlots.map((slot, index) => (
@@ -769,10 +762,10 @@ export function VideoPlaceholders({ previewOne = false }: { previewOne?: boolean
           <div className="or-video-slot-copy">
             <p className="or-eyebrow">MR. DETAILER · STUDIO JOURNAL</p>
             <h2>{slot.title}</h2>
-            <div className="or-journal-action">
+            <a className="or-journal-action" href={ohioPage(["detailing-tips", "product-guide", "latest-updates"][index])}>
               <span>Read Journal</span>
               <ArrowUpRight className="or-arrow" />
-            </div>
+            </a>
           </div>
         </article>
       ))}

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { clientConfig } from "../ohio/client-config";
+import { ClientFooter } from "../ohio/client-footer";
 import { StudioQuestions } from "./questions";
 import { LocalVideo, WhatsAppMark } from "../ohio/rebuild-interactions";
 import { namexVideo } from "../ohio/rebuild-data";
@@ -60,12 +62,12 @@ export function StudioPage() {
           {[
             ["01 / Paint Protection", "Invisible protection,", "maximum confidence.", "#o31-ppf"],
             [
-              "02 / Coating",
+              "02 / Coatings",
               "Ceramic / Borophene",
               "Graphene",
               "#o31-coatings",
             ],
-            ["03 / Auto Mods", "Design, build,", "perfected.", "#o31-mods"],
+            ["03 / Auto Mods", "DESIGN. BUILD.", "PERFECTED.", "#o31-mods"],
           ].map(([label, line1, line2, href]) => (
             <a key={href} href={href}>
               <p className="o31-eyebrow">{label}</p>
@@ -75,7 +77,7 @@ export function StudioPage() {
                 {line2}
               </h2>
               <span aria-hidden="true">↗</span>
-              <small>{href === "#o31-coatings" ? "DEEP, LONG-TERM PROTECTION" : href === "#o31-mods" ? "FROM LIGHTING UPGRADES TO PERFORMANCE TUNING" : "PAINT PROTECTION FILM"}</small>
+              <small>{href === "#o31-coatings" ? "DEEP GLOSS, LONG-TERM PROTECTION" : href === "#o31-mods" ? "FROM LIGHTING UPGRADES TO PERFORMANCE TUNING" : "PAINT PROTECTION FILM"}</small>
             </a>
           ))}
         </div>
@@ -105,7 +107,7 @@ export function StudioPage() {
           <Gallery />
         </section>
         <Services />
-        <section className="oa-product-film"><div><p className="o31-eyebrow">STUDIO ESSENTIALS / PRODUCT FILM</p><h2>Care, considered.<br/><em>Every day.</em></h2><p>A closer look at the products behind the finish.</p></div><div className="oa-film"><LocalVideo src="/videos/productvideo.mp4" poster={photo("IMG_20260809_181254.jpg.jpeg")} label="MR. DETAILER product film"/></div></section>
+        <section className="oa-product-film"><div><p className="o31-eyebrow">STUDIO ESSENTIALS</p><h2>Care, considered.<br/><em>Every day.</em></h2><p>A closer look at the products behind the finish.</p></div><div className="oa-film"><LocalVideo src="/videos/productvideo.mp4" poster={photo("IMG_20260809_181254.jpg.jpeg")} label="MR. DETAILER product film"/></div></section>
         <section
           className="o31-section o31-approach"
           id="o31-story"
@@ -114,9 +116,9 @@ export function StudioPage() {
           <div className="o31-section-heading">
             <p className="o31-eyebrow">03 / Protection Science · Meet Our Team</p>
             <h2 id="o31-story-title">
-              About us.
+              WE LISTEN. WE ASSESS.
               <br />
-              <span className="o31-muted">People behind the finish.</span>
+              <span className="o31-muted">WE CARE FOR THE DETAILS.</span>
             </h2>
             <p>
               Welcome back to perfection.
@@ -191,30 +193,19 @@ export function StudioPage() {
           aria-labelledby="o31-namex-title"
         >
           <div className="o31-namex-copy">
-            <p className="o31-eyebrow">04 / About NameX</p>
+            <Image className="client-namex-logo" src={clientConfig.namexLogo} alt="NameX" width={240} height={130}/>
             <h2 id="o31-namex-title">
-              Meet NameX.
-              <br />
-              Look closer.
+              ABOUT NAMEX
             </h2>
             <p>
-              Explore paint protection film with the studio. Compare the finish,
-              coverage, care requirements and applicable product terms before
-              choosing.
+              Know what protects your car. A beautiful finish deserves thoughtful protection. Explore NameX at Mr. Detailer.
             </p>
-            <a
-              className="o31-text-link"
-              href={quoteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ask about NameX ↗
-            </a>
+            {clientConfig.namexUrl && <a className="o31-text-link" href={clientConfig.namexUrl} target="_blank" rel="noopener noreferrer">Explore NameX ↗</a>}
           </div>
           <div className="o31-namex-image oa-film"><LocalVideo src={namexVideo} poster={photo("Picsart_26-09-02_15-33-19-009.jpg.jpeg")} label="NameX paint protection film video"/></div>
           <div className="o31-shop" id="o31-shop">
             <p className="o31-eyebrow">SHOP / Curated for every car</p>
-            <p>Bring studio quality home.</p>
+            <p>Bring studio quality home.</p><Image src={clientConfig.shopImage} width={1000} height={667} alt="Pro Detail Kit with care products and accessories"/>
             <a href={quoteUrl} target="_blank" rel="noopener noreferrer">
               Ask about products & availability ↗
             </a>
@@ -280,7 +271,7 @@ export function StudioPage() {
           id="o31-studio"
           aria-labelledby="o31-studio-title"
         >
-          <p className="o31-eyebrow">06 / Join a studio</p>
+          <p className="o31-eyebrow">06 / Own a Studio</p>
           <h2 id="o31-studio-title">
             Share our eye
             <br />
@@ -294,11 +285,11 @@ export function StudioPage() {
             </p>
             <a
               className="o31-button"
-              href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("Hello Mr. Detailer, I would like to enquire about joining a studio.")}`}
+              href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("Hello Mr. Detailer, I would like to enquire about owning a studio.")}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Join a studio ↗
+              Own a Studio ↗
             </a>
           </div>
           <span className="o31-studio-arrow" aria-hidden="true">
@@ -406,44 +397,34 @@ export function StudioPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <WhatsAppMark/> <span className="oa-sr-only">Contact MR. DETAILER on WhatsApp</span> ↗
+              <WhatsAppMark/> <span>DROP US A LINE</span> ↗
             </a>
             <dl className="o31-contact-details">
               <div>
-                <dt>Call / WhatsApp</dt>
+                <dt>Call</dt>
                 <dd>
-                  <a href={`tel:+${contact.whatsapp}`}>{contact.phone}</a>
+                  <a href={clientConfig.telephone}>{clientConfig.phone}</a>
                 </dd>
               </div>
               <div>
                 <dt>Visit us</dt>
                 <dd>
-                  SCF 1, I-Block Market, Sarabha Nagar
-                  <br />
-                  <span>Ludhiana, Punjab 141001</span>
+                  {clientConfig.location || "Contact us for the studio location."}
                 </dd>
               </div>
               <div>
-                <dt>Email / Working hours</dt>
-                <dd>Details to be confirmed by the studio.</dd>
+                <dt>Email</dt>
+                <dd><a href={`mailto:${clientConfig.email}`}>{clientConfig.email}</a></dd>
               </div>
             </dl>
           </div>
           <div className="o31-booking-panel">
-            <p className="o31-eyebrow">Book an appointment</p>
-            <h3>Start with your car.</h3>
+            <p className="o31-eyebrow">BOOK A STUDIO INSPECTION</p>
+            <h3>We would love to hear from you.</h3>
             <Booking />
           </div>
         </section>
-        <footer className="o31-footer">
-          <a href="#o31-home">
-            MR. DETAILER<span>THE BOSS OF DETAILERS</span>
-          </a>
-          <p>Welcome back to perfection.</p>
-          <a href="#o31-home" className="o31-back-top">
-            Back to top ↑
-          </a>
-        </footer>
+        <ClientFooter/>
       </main>
     </Shell>
   );

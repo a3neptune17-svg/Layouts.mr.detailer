@@ -12,7 +12,7 @@ export function ThemeControl({
   setTheme?: (theme: "light" | "dark") => void;
 } = {}) {
   const ref = useRef<HTMLButtonElement>(null);
-  const [localTheme, setLocalTheme] = useState<"light" | "dark">("light");
+  const [localTheme, setLocalTheme] = useState<"light" | "dark">("dark");
 
   const currentTheme = theme ?? localTheme;
 
@@ -23,9 +23,8 @@ export function ThemeControl({
     } else {
       setLocalTheme(next);
     }
-    const root = document.querySelector<HTMLElement>(".ohio-rebuild, .ohio-preview-two");
+    const root = ref.current?.closest<HTMLElement>(".ohio-rebuild, .ohio-preview-two");
     if (root) root.dataset.theme = next;
-    document.documentElement.dataset.theme = next;
   };
 
   return (
@@ -37,11 +36,9 @@ export function ThemeControl({
       aria-pressed={currentTheme === "light"}
       onClick={toggle}
     >
-      <span aria-hidden="true">{currentTheme === "dark" ? "☾" : "☀"}</span>
-      <span>{currentTheme === "dark" ? "DARK MODE" : "LIGHT MODE"}</span>
-      <span className="ohio-theme-track" aria-hidden="true">
-        <i />
-      </span>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5">
+        {currentTheme === "dark" ? <><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></> : <path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/>}
+      </svg>
     </button>
   );
 }
