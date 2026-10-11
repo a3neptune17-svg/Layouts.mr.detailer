@@ -786,10 +786,6 @@ export function RebuildStory() {
         sizes="(max-width:1180px) 100vw, 80vw"
       />
       <div className="or-story-card or-lime" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setHeld(false); }}>
-        <div className="client-carousel-track" aria-hidden="true">
-          <span className="client-carousel-fill" style={{ width: `${progress * 100}%` }} />
-          <span className="client-carousel-indicator" style={{ left: `calc(${progress * 100}% - ${progress * 28}px)` }} />
-        </div>
         <span className="or-tag">BLOGS</span>
         <div key={index} className="or-qa-copy">
           <p className="or-eyebrow">Detailing Tips · Product Guide · Latest Updates</p>
@@ -815,6 +811,10 @@ export function RebuildStory() {
             <ArrowRight className="or-arrow" />
           </button>
         </div>
+        <div className="client-carousel-track" aria-hidden="true">
+          <span className="client-carousel-fill" style={{ width: `${progress * 100}%` }} />
+          <span className="client-carousel-indicator" style={{ left: `calc(${progress * 100}% - ${progress * 20}px)` }} />
+        </div>
       </div>
     </section>
   );
@@ -827,7 +827,6 @@ export function VideoPlaceholders() {
         <article className="or-video-slot or-journal-card" key={slot.title} id={index === 1 ? "product-guide" : undefined}>
           <Image src={imagePath(slot.image)} alt={slot.alt} fill sizes="(max-width:768px) 100vw, 33vw" />
           <div className="or-video-slot-copy">
-            <p className="or-eyebrow">STUDIO JOURNAL</p>
             <h2>{slot.title}</h2>
             <a className="or-journal-action" href={ohioPage(["detailing-tips", "product-guide", "latest-updates"][index])}>
               <span>Read Journal</span>
