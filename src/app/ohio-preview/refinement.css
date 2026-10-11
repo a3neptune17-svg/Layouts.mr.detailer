@@ -175,13 +175,16 @@
   transition: color 0.2s ease, transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.ohio-client-preview .or-nav-accent-bar {
-  display: inline-block;
-  width: 0;
-  height: 2px;
-  background: var(--or-lime);
-  border-radius: 1px;
-  transition: width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+.ohio-client-preview .or-nav-accent-bar,
+.ohio-client-preview .or-nav-row:hover .or-nav-accent-bar,
+.ohio-client-preview .or-nav-row.is-hovered .or-nav-accent-bar,
+.ohio-client-preview .or-nav-link[aria-current="location"] .or-nav-accent-bar,
+.ohio-client-preview .ohio-rebuild.or-preview-one[data-theme="light"] .or-nav-accent-bar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  content: none !important;
 }
 
 /* Nav row hover / active states */
@@ -191,18 +194,8 @@
   transform: translateX(4px);
 }
 
-.ohio-client-preview .or-nav-row:hover .or-nav-accent-bar,
-.ohio-client-preview .or-nav-row.is-hovered .or-nav-accent-bar {
-  width: 14px;
-}
-
 .ohio-client-preview .or-nav-link[aria-current="location"] {
   color: var(--or-lime) !important;
-}
-
-.ohio-client-preview .or-nav-link[aria-current="location"] .or-nav-accent-bar {
-  width: 18px;
-  background: var(--or-lime);
 }
 
 /* Light Mode rail nav text & hover */
@@ -220,9 +213,6 @@
   color: #43541e !important;
 }
 
-.ohio-client-preview .ohio-rebuild.or-preview-one[data-theme="light"] .or-nav-accent-bar {
-  background: #43541e;
-}
 
 /* COMPACT PREMIUM LEFT MENU HOVER POPUP — Mini replica of Ohio menu popup */
 .ohio-client-preview .or-nav-hover-popup {
@@ -942,7 +932,7 @@
 
 /* Hero panels in Light mode */
 .ohio-client-preview .ohio-rebuild.or-preview-one[data-theme="light"] .or-hero-panel:not(.or-lime) {
-  background: rgba(244, 243, 238, 0.95);
+  background: rgba(244, 243, 238, 0.95) !important;
   color: #23251f;
   border: 1px solid rgba(35, 37, 31, 0.08);
 }

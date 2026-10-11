@@ -111,7 +111,7 @@
 .ohio-rebuild .or-detail-list>details>h3{margin-top:24px;font-size:18px}
 .ohio-rebuild .or-detail-list>details>a{display:inline-block;margin:10px 0;color:var(--or-lime)}
 .ohio-rebuild .or-namex{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0;align-items:center}
-.ohio-rebuild .or-namex img{width:100%;height:auto;background:#fff}
+.ohio-rebuild .or-namex img{width:100%;height:auto;background:transparent}
 .ohio-rebuild .or-namex p{margin:20px 0}
 .ohio-rebuild .or-contact{padding:70px var(--or-space);display:grid;grid-template-columns:1fr 1.3fr auto;align-items:center;gap:30px;border-block:1px solid #ffffff1a;min-height:340px}
 .ohio-rebuild .or-contact h2{font-size:clamp(32px,3.4vw,56px)}

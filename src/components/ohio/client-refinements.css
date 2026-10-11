@@ -116,6 +116,12 @@
   height: auto;
   object-fit: contain;
 }
+.ohio-rebuild[data-theme="light"] .or-rail[data-over-hero="true"] .or-brand-logo-dark {
+  display: block !important;
+}
+.ohio-rebuild[data-theme="light"] .or-rail[data-over-hero="true"] .or-brand-logo-light {
+  display: none !important;
+}
 .oa-brand-logo-link {
   display: inline-flex;
   align-items: center;
@@ -139,11 +145,22 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 24px;
+  background: transparent !important;
+  background-color: transparent !important;
 }
-.client-namex-logo {
+.client-namex-logo,
+.ohio-rebuild .or-namex img,
+.ohio-rebuild .client-namex-logo {
   width: 220px;
   height: auto;
   object-fit: contain;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.ohio-rebuild[data-theme="light"] .or-namex-intro .or-intro-copy,
+[data-theme="light"] .or-namex-intro .or-intro-copy {
+  color: #565c4c !important;
 }
 
 /* --- Restored Visible Plus (+) Indicators in Navigation --- */
@@ -197,7 +214,7 @@
 
 /* --- Hero 3-Panel Presentation (PPF, Coatings, Auto Mods) --- */
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-main {
-  margin-right: 0 !important;
+  margin-right: var(--or-space) !important;
 }
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panels {
   width: 100% !important;
@@ -261,76 +278,122 @@
   padding-top: 24px;
 }
 
-/* --- Rebuilt Shop Section (No Black Patch, Dedicated Editorial Card) --- */
-.ohio-client-preview .ohio-rebuild.or-preview-one .or-shop-card {
-  grid-column: span 2 !important;
-  display: grid !important;
-  grid-template-columns: 1fr 1.25fr !important;
-  background: var(--client-surface) !important;
-  color: var(--client-ink) !important;
-  border: 1px solid var(--client-line);
-  overflow: hidden;
-  position: relative;
-  min-height: 420px;
+/* --- Left Rail Sizing (Matching Vercel Reference mr-detailer-ohio.vercel.app) --- */
+@media (min-width: 1181px) {
+  .ohio-client-preview .ohio-rebuild.or-preview-one,
+  .ohio-rebuild {
+    --or-rail: clamp(195px, 14vw, 218px) !important;
+    --or-space: clamp(16px, 1.5vw, 24px) !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-rail,
+  .ohio-rebuild .or-rail {
+    width: var(--or-rail) !important;
+    padding: 24px var(--or-space) !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-nav-row {
+    min-height: 32px !important;
+    font-size: 12px !important;
+    letter-spacing: 0.07em !important;
+    gap: 4px !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-nav-link {
+    font-size: 12px !important;
+    padding: 5px 0 !important;
+    letter-spacing: 0.07em !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-brand-row {
+    gap: 12px !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-menu-toggle {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-brand-logo {
+    width: 82px !important;
+  }
+
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-rail-quote {
+    font-size: 12px !important;
+    padding: 9px 12px !important;
+  }
 }
-.or-shop-card-content {
-  padding: clamp(28px, 3.5vw, 50px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  z-index: 2;
+
+/* --- Completely Remove Horizontal Bar from Navigation Options --- */
+.or-nav-accent-bar,
+.ohio-client-preview .or-nav-accent-bar,
+.ohio-client-preview .or-nav-row:hover .or-nav-accent-bar,
+.ohio-client-preview .or-nav-row.is-hovered .or-nav-accent-bar,
+.ohio-client-preview .or-nav-link[aria-current="location"] .or-nav-accent-bar,
+.ohio-client-preview .or-nav-row > a[aria-current="location"]::before,
+.ohio-client-preview .or-nav-row > a[aria-current="location"]::after,
+.ohio-client-preview .or-nav-row > a::before,
+.ohio-client-preview .or-nav-row > a::after,
+.ohio-client-preview .or-nav-link::before,
+.ohio-client-preview .or-nav-link::after {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  content: none !important;
+  border: 0 !important;
 }
-.or-shop-card-title {
-  font-size: clamp(34px, 3.5vw, 54px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin: 0;
-  text-transform: uppercase;
+
+/* --- Lime Green Box Typography (Pure 100% Solid Black on Lime Guarantee) --- */
+.ohio-rebuild .or-lime:not(.or-round),
+.ohio-rebuild .or-hero-panel.or-lime :is(h1, h2, h3, h4, h5, h6, p, strong, b),
+.ohio-rebuild .or-story-card.or-lime :is(h1, h2, h3, h4, h5, h6, p, strong, b),
+.ohio-rebuild .or-service-panel.or-lime :is(h1, h2, h3, h4, h5, h6, p, strong, b),
+.ohio-rebuild .or-counters.or-lime :is(h1, h2, h3, h4, h5, h6, p, strong, b) {
+  color: #141512 !important;
+  opacity: 1 !important;
 }
-.or-shop-tagline {
-  font-size: clamp(13px, 1.1vw, 16px);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--client-ink);
-  margin: 4px 0 0;
+.ohio-rebuild .or-hero-panel.or-lime .or-panel-eyebrow,
+.ohio-rebuild .or-hero-panel.or-lime .or-panel-heading,
+.ohio-rebuild .or-hero-panel.or-lime .or-product-line,
+.ohio-rebuild .or-hero-panel.or-lime .or-panel-subline,
+.ohio-rebuild .or-hero-panel.or-lime p,
+.ohio-rebuild .or-hero-panel.or-lime strong,
+.ohio-rebuild .or-hero-panel.or-lime h2 {
+  color: #141512 !important;
+  opacity: 1 !important;
 }
-.or-shop-subline {
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--client-muted);
-  margin: 0 0 16px;
+
+/* Arrow in Auto Mods circle — High-contrast white arrow on black circle */
+.ohio-rebuild .or-hero-panel.or-lime .or-round {
+  background: #141512 !important;
+  color: #ffffff !important;
 }
-.or-shop-action {
-  align-self: flex-start;
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.ohio-rebuild .or-hero-panel.or-lime .or-round svg,
+.ohio-rebuild .or-hero-panel.or-lime .or-round .or-arrow,
+.ohio-rebuild .or-hero-panel.or-lime .or-round path {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
 }
-.or-shop-card-image-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #10100f;
-  overflow: hidden;
+
+/* --- Fix Detailing Packages Grid Gap --- */
+.ohio-rebuild .or-projects {
+  align-items: stretch !important;
 }
-.ohio-rebuild[data-theme="light"] .or-shop-card-image-wrap {
-  background: #eae8e1;
+.ohio-rebuild .or-project-1 {
+  aspect-ratio: unset !important;
+  height: 100% !important;
+  min-height: 440px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
 }
-.or-shop-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.ohio-rebuild .or-project-1 img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
-.or-shop-card:hover .or-shop-card-image {
-  transform: scale(1.04);
-}
+
 
 /* Shop section in Preview 2 */
 .o31-shop {
@@ -379,29 +442,32 @@
   position: relative;
   height: 2px;
   width: 100%;
-  background: rgba(35, 37, 31, 0.25);
-  margin-bottom: 24px;
+  max-width: 240px;
+  background: rgba(20, 21, 18, 0.2);
+  margin-bottom: 20px;
   overflow: visible;
+  border-radius: 2px;
 }
 .ohio-rebuild[data-theme="dark"] .client-carousel-track {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(20, 21, 18, 0.22);
 }
 .client-carousel-fill {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  background: currentColor;
+  background: #141512;
   opacity: 0.35;
+  border-radius: 2px;
 }
 .client-carousel-indicator {
   position: absolute;
   top: -1px;
-  width: 28px;
+  width: 20px;
   height: 4px;
   border-radius: 2px;
-  background: currentColor;
-  box-shadow: 0 0 6px currentColor;
+  background: #141512;
+  box-shadow: 0 0 4px rgba(20, 21, 18, 0.4);
   transition: none;
 }
 
@@ -623,9 +689,6 @@
 
 @media (max-width: 768px) {
   .ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panels {
-    grid-template-columns: 1fr !important;
-  }
-  .ohio-client-preview .ohio-rebuild.or-preview-one .or-shop-card {
     grid-template-columns: 1fr !important;
   }
   .client-footer-grid {

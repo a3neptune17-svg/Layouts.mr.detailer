@@ -25,7 +25,7 @@ export function Navigation() {
             className="oa-nav-expand-btn"
             aria-label={`Expand ${item.label}`}
             aria-expanded={expanded === item.label}
-            onClick={() => setExpanded(current => current === item.label ? null : item.label)}
+            onClick={() => setExpanded(item.label)}
           >
             +
           </button>

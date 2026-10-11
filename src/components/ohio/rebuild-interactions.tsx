@@ -286,11 +286,8 @@ function Navigation({
             >
               <span className="or-nav-label">
                 {item.label}
-                {item.children.length > 0 && (
-                  <span className="or-nav-plus" aria-hidden="true"> +</span>
-                )}
+                <span className="or-nav-plus" aria-hidden="true"> +</span>
               </span>
-              <span className="or-nav-accent-bar" aria-hidden="true" />
             </a>
 
             {/* Hover popup for this navigation item on desktop — Mini replica of Ohio menu */}
@@ -598,7 +595,7 @@ export function RebuildNavigation() {
                       className="or-popup-hover-badge"
                       aria-label={`Expand ${item.label}`}
                       aria-expanded={hoveredMenuRow === item.label}
-                      onClick={() => setHoveredMenuRow(current => current === item.label ? null : item.label)}
+                      onClick={() => setHoveredMenuRow(item.label)}
                     >
                       +
                     </button>
@@ -679,79 +676,52 @@ export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boole
   return (
     <section id="work" className="or-projects" aria-label="Our work">
       {intro}
-      {projects.map((project, position) => {
-        if (position === 2) {
-          return (
-            <div key={project.title} className="or-project or-project-2 or-shop-card">
-              <div className="or-shop-card-content">
-                <p className="or-eyebrow">STUDIO ESSENTIALS</p>
-                <h3 className="or-shop-card-title">SHOP</h3>
-                <p className="or-shop-tagline">CURATED FOR EVERY CAR</p>
-                <p className="or-shop-subline">BRING STUDIO QUALITY HOME</p>
-                <a className="or-pill or-shop-action" href={ohioPage("shop")}>
-                  Explore Products <ArrowRight className="or-arrow-inline" />
-                </a>
-              </div>
-              <div className="or-shop-card-image-wrap">
-                <Image
-                  src={imagePath(project.image)}
-                  alt={project.alt}
-                  width={1000}
-                  height={667}
-                  className="or-shop-card-image"
-                />
-              </div>
-            </div>
-          );
-        }
-
-        return (
-          <div
-            key={project.title}
-            className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}
-          >
-            {project.video ? (
-              <>
-                {position === 0 && clientConfig.namexUrl ? (
-                  <a
-                    className="or-namex-media-link"
-                    href={clientConfig.namexUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Visit NameX"
-                  >
-                    <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
-                  </a>
-                ) : (
-                  <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
-                )}
-              </>
-            ) : (
-              <>
-                <Image
-                  src={imagePath(project.image)}
-                  alt={project.alt}
-                  fill
-                  sizes="(max-width:768px) 100vw, 50vw"
-                />
+      {projects.map((project, position) => (
+        <div
+          key={project.title}
+          className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}
+        >
+          {project.video ? (
+            <>
+              {position === 0 && clientConfig.namexUrl ? (
                 <a
-                  className="or-project-hit"
-                  href={ohioPage("detailing")}
-                  aria-label={`Explore ${project.title}`}
+                  className="or-namex-media-link"
+                  href={clientConfig.namexUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit NameX"
                 >
-                  <span className="or-project-open" aria-hidden="true">
-                    <ArrowUpRight className="or-arrow" />
-                  </span>
+                  <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
                 </a>
-                <span className="or-project-caption">
-                  <strong>{project.title}</strong>
-                  <span>{project.category}</span>
+              ) : (
+                <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
+              )}
+            </>
+          ) : (
+            <>
+              <Image
+                src={imagePath(project.image)}
+                alt={project.alt}
+                fill
+                sizes="(max-width:768px) 100vw, 50vw"
+              />
+              <a
+                className="or-project-hit"
+                href={position === 2 ? ohioPage("shop") : ohioPage("detailing")}
+                aria-label={`Explore ${project.title}`}
+              >
+                <span className="or-project-open" aria-hidden="true">
+                  <ArrowUpRight className="or-arrow" />
                 </span>
-              </>
-            )}
-          </div>
-        );
-      })}
+              </a>
+              <span className="or-project-caption">
+                <strong>{project.title}</strong>
+                <span>{project.category}</span>
+              </span>
+            </>
+          )}
+        </div>
+      ))}
     </section>
   );
 }
@@ -804,7 +774,7 @@ export function LocalVideo({ src, poster, label }: { src: string; poster: string
 }
 
 export function RebuildStory() {
-  const { index, paused, setPaused, setHeld, progress, change } = useCarousel(studioQuestions.length);
+  const { index, setHeld, progress, change } = useCarousel(studioQuestions.length);
   const item = studioQuestions[index];
 
   return (
@@ -844,13 +814,6 @@ export function RebuildStory() {
           >
             <ArrowRight className="or-arrow" />
           </button>
-          <button
-            className="or-round"
-            aria-label={paused ? "Start automatic rotation" : "Pause automatic rotation"}
-            onClick={() => setPaused((current) => !current)}
-          >
-            {paused ? "Auto" : "Pause"}
-          </button>
         </div>
       </div>
     </section>
@@ -864,7 +827,7 @@ export function VideoPlaceholders() {
         <article className="or-video-slot or-journal-card" key={slot.title} id={index === 1 ? "product-guide" : undefined}>
           <Image src={imagePath(slot.image)} alt={slot.alt} fill sizes="(max-width:768px) 100vw, 33vw" />
           <div className="or-video-slot-copy">
-            <p className="or-eyebrow">MR. DETAILER · STUDIO JOURNAL</p>
+            <p className="or-eyebrow">STUDIO JOURNAL</p>
             <h2>{slot.title}</h2>
             <a className="or-journal-action" href={ohioPage(["detailing-tips", "product-guide", "latest-updates"][index])}>
               <span>Read Journal</span>
