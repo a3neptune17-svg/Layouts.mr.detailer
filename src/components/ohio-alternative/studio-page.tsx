@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { clientConfig } from "../ohio/client-config";
 import { ClientFooter } from "../ohio/client-footer";
 import { StudioQuestions } from "./questions";
@@ -193,7 +194,10 @@ export function StudioPage() {
           aria-labelledby="o31-namex-title"
         >
           <div className="o31-namex-copy">
-            <Image className="client-namex-logo" src={clientConfig.namexLogo} alt="NameX" width={240} height={130}/>
+            <div className="client-namex-logo-wrap">
+              <Image className="client-namex-logo client-namex-logo-dark" src={clientConfig.namexLogoDark} alt="NameX" width={220} height={83} />
+              <Image className="client-namex-logo client-namex-logo-light" src={clientConfig.namexLogoLight} alt="NameX" width={220} height={83} />
+            </div>
             <h2 id="o31-namex-title">
               ABOUT NAMEX
             </h2>
@@ -204,11 +208,17 @@ export function StudioPage() {
           </div>
           <div className="o31-namex-image oa-film"><LocalVideo src={namexVideo} poster={photo("Picsart_26-09-02_15-33-19-009.jpg.jpeg")} label="NameX paint protection film video"/></div>
           <div className="o31-shop" id="o31-shop">
-            <p className="o31-eyebrow">SHOP / Curated for every car</p>
-            <p>Bring studio quality home.</p><Image src={clientConfig.shopImage} width={1000} height={667} alt="Pro Detail Kit with care products and accessories"/>
-            <a href={quoteUrl} target="_blank" rel="noopener noreferrer">
-              Ask about products & availability ↗
-            </a>
+            <div className="o31-shop-header">
+              <p className="o31-eyebrow">CURATED FOR EVERY CAR</p>
+              <h2 className="o31-shop-heading">SHOP</h2>
+              <p className="o31-shop-tagline">BRING STUDIO QUALITY HOME</p>
+            </div>
+            <div className="o31-shop-image-wrap">
+              <Image src={clientConfig.shopImage} width={1000} height={667} alt="Pro Detail Kit with care products and accessories" className="o31-shop-img" />
+            </div>
+            <Link href="/ohio-preview/explore/shop" className="o31-shop-link">
+              Explore Products &amp; Accessories ↗
+            </Link>
           </div>
         </section>
         <section

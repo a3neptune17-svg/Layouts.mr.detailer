@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { navigation as clientNavigation, FourLinesMenuIcon, WhatsAppMark } from "../ohio/rebuild-interactions";
 import { useRef, useState } from "react";
 import { quoteUrl } from "./content";
@@ -14,7 +15,22 @@ export function Navigation() {
   }
   const links = clientNavigation.map((item, index) => (
     <div className="oa-nav-group" key={item.label} onMouseEnter={() => setExpanded(item.label)} onMouseLeave={() => setExpanded(null)} onFocus={() => setExpanded(item.label)}>
-      <div className="oa-nav-main"><a href={item.href} onClick={close}><span>0{index + 1}</span>{item.label}</a><button type="button" aria-label={`Expand ${item.label}`} aria-expanded={expanded === item.label} onClick={() => setExpanded(item.label)}>{item.label === "OWN A STUDIO" ? "+" : "⌄"}</button></div>
+      <div className="oa-nav-main">
+        <a href={item.href} onClick={close}>
+          <span>0{index + 1}</span>{item.label}
+        </a>
+        {item.children.length > 0 && (
+          <button
+            type="button"
+            className="oa-nav-expand-btn"
+            aria-label={`Expand ${item.label}`}
+            aria-expanded={expanded === item.label}
+            onClick={() => setExpanded(current => current === item.label ? null : item.label)}
+          >
+            +
+          </button>
+        )}
+      </div>
       {expanded === item.label && <div className="oa-nav-submenu">{item.children.map(([label, href]) => <a key={label} href={href} onClick={close}>{label}</a>)}</div>}
     </div>
   ));
@@ -24,8 +40,23 @@ export function Navigation() {
         Skip to content
       </a>
       <header className="o31-rail">
-        <a href="#o31-home" className="o31-logo" aria-label="Mr. Detailer home">
-          <span className="oa-wordmark">MR.<br/>DETAILER<span>THE BOSS OF DETAILERS</span></span>
+        <a href="#o31-home" className="o31-logo oa-brand-logo-link" aria-label="MR. DETAILER home">
+          <Image
+            src="/images/mrdetailer-logo-dark.png"
+            alt="MR. DETAILER"
+            width={100}
+            height={78}
+            className="oa-brand-logo oa-brand-logo-dark"
+            priority
+          />
+          <Image
+            src="/images/mrdetailer-logo-light.png"
+            alt="MR. DETAILER"
+            width={100}
+            height={78}
+            className="oa-brand-logo oa-brand-logo-light"
+            priority
+          />
         </a>
         
         <nav aria-label="Main navigation" className="o31-desktop-nav">

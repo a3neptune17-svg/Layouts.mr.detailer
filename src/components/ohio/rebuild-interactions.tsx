@@ -284,7 +284,12 @@ function Navigation({
               aria-expanded={isHovered}
               onClick={(event) => goToSection(event, close)}
             >
-              <span className="or-nav-label">{item.label}{item.label === "OWN A STUDIO" && <span aria-hidden="true"> +</span>}</span>
+              <span className="or-nav-label">
+                {item.label}
+                {item.children.length > 0 && (
+                  <span className="or-nav-plus" aria-hidden="true"> +</span>
+                )}
+              </span>
               <span className="or-nav-accent-bar" aria-hidden="true" />
             </a>
 
@@ -505,10 +510,23 @@ export function RebuildNavigation() {
           >
             <FourLinesMenuIcon className="or-menu-icon" isOpen={menuOpen} />
           </button>
-          <a className="or-brand" href="/ohio-preview" aria-label="MR. DETAILER home">
-            MR.
-            <br />
-            DETAILER<span>THE BOSS OF DETAILERS</span>
+          <a className="or-brand or-brand-logo-link" href="/ohio-preview" aria-label="MR. DETAILER home">
+            <Image
+              src="/images/mrdetailer-logo-dark.png"
+              alt="MR. DETAILER"
+              width={92}
+              height={72}
+              className="or-brand-logo or-brand-logo-dark"
+              priority
+            />
+            <Image
+              src="/images/mrdetailer-logo-light.png"
+              alt="MR. DETAILER"
+              width={92}
+              height={72}
+              className="or-brand-logo or-brand-logo-light"
+              priority
+            />
           </a>
         </div>
 
@@ -575,7 +593,15 @@ export function RebuildNavigation() {
                     {item.label}
                   </a>
                   {item.children.length > 0 && (
-                    <button type="button" className="or-popup-hover-badge" aria-label={`Expand ${item.label}`} aria-expanded={hoveredMenuRow === item.label} onClick={() => setHoveredMenuRow(item.label)}>{item.label === "OWN A STUDIO" ? "+" : "▾"}</button>
+                    <button
+                      type="button"
+                      className="or-popup-hover-badge"
+                      aria-label={`Expand ${item.label}`}
+                      aria-expanded={hoveredMenuRow === item.label}
+                      onClick={() => setHoveredMenuRow(current => current === item.label ? null : item.label)}
+                    >
+                      +
+                    </button>
                   )}
                 </div>
                 {item.children.length > 0 && (
@@ -650,9 +676,84 @@ export function RebuildInfo({ children }: { children: ReactNode }) {
 }
 
 export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boolean }) {
-  return <section id="work" className="or-projects" aria-label="Our work">{intro}{projects.map((project, position) => <div key={project.title} className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}>
-    {project.video ? <>{position === 0 && clientConfig.namexUrl ? <a className="or-namex-media-link" href={clientConfig.namexUrl} target="_blank" rel="noopener noreferrer" aria-label="Visit NameX"><LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt}/></a> : <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt}/>}</> : <><Image src={imagePath(project.image)} alt={project.alt} fill sizes="(max-width:768px) 100vw, 50vw"/><a className="or-project-hit" href={ohioPage(position === 2 ? "shop" : "detailing")} aria-label={`Explore ${project.title}`}><span className="or-project-open" aria-hidden="true"><ArrowUpRight className="or-arrow"/></span></a><span className="or-project-caption"><strong>{project.title}</strong><span>{project.category}</span></span></>}
-  </div>)}</section>;
+  return (
+    <section id="work" className="or-projects" aria-label="Our work">
+      {intro}
+      {projects.map((project, position) => {
+        if (position === 2) {
+          return (
+            <div key={project.title} className="or-project or-project-2 or-shop-card">
+              <div className="or-shop-card-content">
+                <p className="or-eyebrow">STUDIO ESSENTIALS</p>
+                <h3 className="or-shop-card-title">SHOP</h3>
+                <p className="or-shop-tagline">CURATED FOR EVERY CAR</p>
+                <p className="or-shop-subline">BRING STUDIO QUALITY HOME</p>
+                <a className="or-pill or-shop-action" href={ohioPage("shop")}>
+                  Explore Products <ArrowRight className="or-arrow-inline" />
+                </a>
+              </div>
+              <div className="or-shop-card-image-wrap">
+                <Image
+                  src={imagePath(project.image)}
+                  alt={project.alt}
+                  width={1000}
+                  height={667}
+                  className="or-shop-card-image"
+                />
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <div
+            key={project.title}
+            className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}
+          >
+            {project.video ? (
+              <>
+                {position === 0 && clientConfig.namexUrl ? (
+                  <a
+                    className="or-namex-media-link"
+                    href={clientConfig.namexUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit NameX"
+                  >
+                    <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
+                  </a>
+                ) : (
+                  <LocalVideo src={project.video} poster={imagePath(project.image)} label={project.alt} />
+                )}
+              </>
+            ) : (
+              <>
+                <Image
+                  src={imagePath(project.image)}
+                  alt={project.alt}
+                  fill
+                  sizes="(max-width:768px) 100vw, 50vw"
+                />
+                <a
+                  className="or-project-hit"
+                  href={ohioPage("detailing")}
+                  aria-label={`Explore ${project.title}`}
+                >
+                  <span className="or-project-open" aria-hidden="true">
+                    <ArrowUpRight className="or-arrow" />
+                  </span>
+                </a>
+                <span className="or-project-caption">
+                  <strong>{project.title}</strong>
+                  <span>{project.category}</span>
+                </span>
+              </>
+            )}
+          </div>
+        );
+      })}
+    </section>
+  );
 }
 
 export function LocalVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
@@ -715,7 +816,10 @@ export function RebuildStory() {
         sizes="(max-width:1180px) 100vw, 80vw"
       />
       <div className="or-story-card or-lime" onMouseEnter={() => setHeld(true)} onMouseLeave={() => setHeld(false)} onFocus={() => setHeld(true)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setHeld(false); }}>
-        <div className="client-carousel-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }}/></div>
+        <div className="client-carousel-track" aria-hidden="true">
+          <span className="client-carousel-fill" style={{ width: `${progress * 100}%` }} />
+          <span className="client-carousel-indicator" style={{ left: `calc(${progress * 100}% - ${progress * 28}px)` }} />
+        </div>
         <span className="or-tag">BLOGS</span>
         <div key={index} className="or-qa-copy">
           <p className="or-eyebrow">Detailing Tips · Product Guide · Latest Updates</p>

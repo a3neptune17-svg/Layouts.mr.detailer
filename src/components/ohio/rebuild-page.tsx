@@ -58,8 +58,8 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
           />
           <div className="or-hero-panels">
             <a className="or-hero-panel" href={ohioPage("ppf")}>
-              <p>PROTECTION</p>
-              <h1>Paint Protection Film</h1>
+              <p className="or-panel-eyebrow">PROTECTION</p>
+              <h2 className="or-panel-heading">PAINT PROTECTION FILM</h2>
               <p className="or-product-line">{clientConfig.ppfProducts.join(" · ")}</p>
               <strong className="or-panel-subline">INVISIBLE PROTECTION, MAXIMUM CONFIDENCE.</strong>
               <span className="or-round" aria-hidden="true">
@@ -67,22 +67,19 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
               </span>
             </a>
             <a className="or-hero-panel" href={ohioPage("coatings")}>
-              <p>SURFACE CARE</p>
-              <h2>Coatings</h2>
-              <p className="or-product-line">Ceramic · Borophene · Graphene</p>
+              <p className="or-panel-eyebrow">SURFACE CARE</p>
+              <h2 className="or-panel-heading">COATINGS</h2>
+              <p className="or-product-line">CERAMIC · BOROPHENE · GRAPHENE</p>
               <strong className="or-panel-subline">DEEP GLOSS, LONG-TERM PROTECTION</strong>
               <span className="or-round" aria-hidden="true">
                 <ArrowUpRight className="or-arrow" />
               </span>
             </a>
             <a className="or-hero-panel or-lime" href={ohioPage("auto-mods")}>
-              <p>AUTO MODS</p>
-              <h2>
-                DESIGN. BUILD.
-                <br />
-                PERFECTED.
-              </h2>
-              <strong className="or-panel-subline">FROM LIGHTING UPGRADES TO PERFORMANCE TUNING</strong>
+              <p className="or-panel-eyebrow">CUSTOMIZATION</p>
+              <h2 className="or-panel-heading">AUTO MODS</h2>
+              <p className="or-product-line">PERFORMANCE · TUNING · STYLING</p>
+              <strong className="or-panel-subline">DESIGN. BUILD. PERFECTED.</strong>
               <span className="or-round" aria-hidden="true">
                 <ArrowUpRight className="or-arrow" />
               </span>
@@ -95,8 +92,11 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
           intro={
             <div className="or-intro or-namex-intro">
               <h2>ABOUT NAMEX</h2>
-              <div>
-                <Image className="client-namex-logo" src={clientConfig.namexLogo} alt="NameX" width={240} height={130}/>
+              <div className="or-namex-intro-body">
+                <div className="client-namex-logo-wrap">
+                  <Image className="client-namex-logo client-namex-logo-dark" src={clientConfig.namexLogoDark} alt="NameX" width={220} height={83} />
+                  <Image className="client-namex-logo client-namex-logo-light" src={clientConfig.namexLogoLight} alt="NameX" width={220} height={83} />
+                </div>
                 <p className="or-intro-copy">Know what protects your car. A beautiful finish deserves thoughtful protection. Explore NameX at Mr. Detailer.</p>
                 {clientConfig.namexUrl && <a className="or-pill" href={clientConfig.namexUrl} target="_blank" rel="noopener noreferrer">Explore NameX <ArrowRight className="or-arrow-inline"/></a>}
               </div>
@@ -252,17 +252,14 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
               <details id="namex">
                 <summary>About NameX</summary>
                 <div className="or-namex">
-                  <Image
-                    src={clientConfig.namexLogo}
-                    alt="NameX"
-                    width={440}
-                    height={440}
-                  />
+                  <div className="client-namex-logo-wrap">
+                    <Image className="client-namex-logo client-namex-logo-dark" src={clientConfig.namexLogoDark} alt="NameX" width={280} height={105} />
+                    <Image className="client-namex-logo client-namex-logo-light" src={clientConfig.namexLogoLight} alt="NameX" width={280} height={105} />
+                  </div>
                   <div>
                     <h3>ABOUT NAMEX</h3>
                     <p>
-                      Explore NameX with the studio team. Ask about available film options, installation and
-                      product-specific care.
+                      Know what protects your car. A beautiful finish deserves thoughtful protection. Explore NameX at Mr. Detailer.
                     </p>
                     <a href={whatsapp} target="_blank" rel="noreferrer">
                       Enquire about NameX <ArrowUpRight className="or-inline-arrow" />

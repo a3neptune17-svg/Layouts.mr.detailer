@@ -8,7 +8,6 @@ import "../../refinement.css";
 import "@/components/ohio/client-refinements.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--or-font" });
-export const dynamicParams = false;
 export function generateStaticParams() { return Object.keys(detailPages).map(slug => ({ slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

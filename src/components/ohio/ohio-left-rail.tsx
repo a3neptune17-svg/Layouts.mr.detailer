@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, X, ArrowUpRight, ChevronRight } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 
 // PRIMARY NAV — EXACTLY FIVE TOPICS (CLIENT REQUIREMENT)
 const PRIMARY_NAV = [
