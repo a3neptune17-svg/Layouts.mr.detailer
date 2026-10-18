@@ -11,12 +11,46 @@ import { Booking } from "../ohio-3-1/booking";
 import { ArrowLeft, ArrowRight, ArrowUpRight, WhatsAppMark } from "./icons";
 import type { DetailContent } from "./detail-content";
 
+// Specialized Inner Pages
+import { PackagesExperience } from "./inner-pages/packages-page";
+import { CoatingsExperience } from "./inner-pages/coatings-page";
+import { PlannerExperience } from "./inner-pages/planner-page";
+import { AutoModsExperience } from "./inner-pages/automods-page";
+import { TuningAndCustomisationExperience } from "./inner-pages/tuning-page";
+import { ShopExperience } from "./inner-pages/shop-page";
+import { AboutExperience } from "./inner-pages/about-page";
+import { WarrantyExperience } from "./inner-pages/warranty-page";
+import { FranchiseExperience } from "./inner-pages/franchise-page";
+import { JournalExperience } from "./inner-pages/journal-page";
+import "./inner-pages/inner-pages.css";
+
 export function DetailPage({ content }: { content: DetailContent }) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
-  const isShop = content.kind === "shop";
   const isGallery = content.kind === "gallery";
   const isBooking = content.kind === "booking";
+  const isPackages = content.kind === "packages";
+  const isCoatings = content.kind === "coatings";
+  const isPlanner = content.kind === "planner";
+  const isAutoMods = content.kind === "auto-mods";
+  const isTuning = content.kind === "tuning";
+  const isShop = content.kind === "shop";
+  const isAbout = content.kind === "about";
+  const isWarranty = content.kind === "warranty";
+  const isFranchise = content.kind === "franchise";
+  const isJournal = content.kind === "journal";
+
+  const isCustomInteractive =
+    isPackages ||
+    isCoatings ||
+    isPlanner ||
+    isAutoMods ||
+    isTuning ||
+    isShop ||
+    isAbout ||
+    isWarranty ||
+    isFranchise ||
+    isJournal;
 
   return (
     <div className="ohio-rebuild or-preview-one" data-theme={theme} id="home">
@@ -35,59 +69,37 @@ export function DetailPage({ content }: { content: DetailContent }) {
             <p className="client-detail-intro">{content.intro}</p>
           </header>
 
-          {/* Shop Hero Card */}
-          {isShop && (
-            <div className="client-shop-hero">
-              <div className="client-shop-hero-copy">
-                <p className="or-panel-eyebrow">PRO DETAIL KIT · CARE ESSENTIALS</p>
-                <h2>STUDIO-GRADE FINISH PRESERVATION</h2>
-                <p>
-                  Curated care products formulated to complement our paint protection films, ceramic coatings, and surface treatments. Discuss product suitability and availability directly with the studio team.
-                </p>
-                <div style={{ display: "flex", gap: "14px", marginTop: "24px" }}>
-                  <a className="or-pill" href={whatsapp} target="_blank" rel="noopener noreferrer">
-                    <WhatsAppMark /> Enquire on WhatsApp <ArrowUpRight className="or-arrow-inline" />
-                  </a>
-                  <a className="or-pill" href={ohioPage("booking")}>
-                    Studio Visit <ArrowRight className="or-arrow-inline" />
-                  </a>
-                </div>
-              </div>
-              <div className="client-shop-hero-media">
-                <Image
-                  src={clientConfig.shopImage}
-                  width={1000}
-                  height={667}
-                  alt="MR. DETAILER Pro Detail Kit with care products and accessories"
-                  className="client-shop-hero-img"
-                  priority
-                />
-              </div>
-            </div>
-          )}
+          {/* 1. Packages / Packages Journey */}
+          {isPackages && <PackagesExperience />}
 
-          {/* Coatings Featured Media Banner */}
-          {content.kind === "coatings" && (
-            <div className="client-service-banner">
-              <div className="client-service-banner-media">
-                <Image
-                  src={clientConfig.namexCoatingsTrio}
-                  alt="NameX Surface Coatings Trio — Ceramic SiC, Borophene, Graphene"
-                  width={1100}
-                  height={620}
-                  className="client-service-banner-img"
-                  priority
-                />
-              </div>
-              <div className="client-service-banner-overlay">
-                <p className="or-panel-eyebrow">NAMEX SURFACE SCIENCE</p>
-                <h3>CERAMIC SiC · BOROPHENE · GRAPHENE</h3>
-                <p>Advanced chemical bonding engineered for maximum optical clarity and extreme hydrophobic protection.</p>
-              </div>
-            </div>
-          )}
+          {/* 2. Coatings Gallery */}
+          {isCoatings && <CoatingsExperience />}
 
-          {/* PPF Featured Media Banner */}
+          {/* 3. Detailing Menu & Car Care Planner */}
+          {isPlanner && <PlannerExperience />}
+
+          {/* 4. Auto Mods Customisation Build Sheet */}
+          {isAutoMods && <AutoModsExperience />}
+
+          {/* 5. Auto Tuning & Customisation Build (with #autotuning anchor) */}
+          {isTuning && <TuningAndCustomisationExperience />}
+
+          {/* 6. Shop Care Shelf & NameX Showcase */}
+          {isShop && <ShopExperience />}
+
+          {/* 7. About Ohio / About Us (Prepare, Perfect, Protect, Preserve) */}
+          {isAbout && <AboutExperience />}
+
+          {/* 8. Warranty Care Hub & Claim Support */}
+          {isWarranty && <WarrantyExperience />}
+
+          {/* 9. Own a Studio Partnership */}
+          {isFranchise && <FranchiseExperience />}
+
+          {/* 10. Detail Journal & Technical Guides */}
+          {isJournal && <JournalExperience />}
+
+          {/* 11. PPF Featured Media Banner (if not custom interactive) */}
           {content.kind === "ppf" && (
             <div className="client-service-banner">
               <div className="client-service-banner-media">
@@ -101,30 +113,9 @@ export function DetailPage({ content }: { content: DetailContent }) {
                 />
               </div>
               <div className="client-service-banner-overlay">
-                <p className="or-panel-eyebrow">PRECISION ALIGNMENT & EDGE TUCK</p>
+                <p className="or-panel-eyebrow">PRECISION ALIGNMENT &amp; EDGE TUCK</p>
                 <h3>OPTICALLY CLEAR ALIPHATIC POLYURETHANE</h3>
                 <p>Self-healing elastomeric matrix dissipating surface swirls with seamless rolled edges.</p>
-              </div>
-            </div>
-          )}
-
-          {/* Auto Mods Featured Media Banner */}
-          {content.kind === "auto-mods" && (
-            <div className="client-service-banner">
-              <div className="client-service-banner-media">
-                <Image
-                  src={imagePath("IMG_20260809_180252.jpg.jpeg")}
-                  alt="MR. DETAILER Studio Customisation Bay"
-                  width={1100}
-                  height={620}
-                  className="client-service-banner-img"
-                  priority
-                />
-              </div>
-              <div className="client-service-banner-overlay">
-                <p className="or-panel-eyebrow">BESPOKE WORKMANSHIP</p>
-                <h3>DENTING · PAINTING · TUNING · STYLING</h3>
-                <p>From climate-controlled paint refinishing to aero carbon kits and performance upgrades.</p>
               </div>
             </div>
           )}
@@ -183,8 +174,8 @@ export function DetailPage({ content }: { content: DetailContent }) {
             </div>
           )}
 
-          {/* Asymmetric Editorial Section Content */}
-          {!isBooking && content.sections.length > 0 && (
+          {/* Standard Asymmetric Editorial Section Content for General Pages */}
+          {!isCustomInteractive && !isBooking && content.sections.length > 0 && (
             <div className="client-service-editorial">
               <div className="client-editorial-main">
                 {content.sections.map((section, idx) => (

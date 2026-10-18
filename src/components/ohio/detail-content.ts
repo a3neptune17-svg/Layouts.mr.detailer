@@ -5,7 +5,21 @@ export type DetailContent = {
   eyebrow: string;
   intro: string;
   sections: { title: string; text: string; slug?: string }[];
-  kind?: "shop" | "gallery" | "booking" | "coatings" | "ppf" | "auto-mods" | "detailing";
+  kind?:
+    | "shop"
+    | "gallery"
+    | "booking"
+    | "coatings"
+    | "ppf"
+    | "auto-mods"
+    | "detailing"
+    | "packages"
+    | "planner"
+    | "tuning"
+    | "about"
+    | "warranty"
+    | "franchise"
+    | "journal";
 };
 
 export const detailPages: Record<string, DetailContent> = {
@@ -493,6 +507,143 @@ for (const [slug, title] of [
   };
 }
 
-// Friendly slug aliases
+// 13 Unique Client Reference Slug Aliases & Mappings
+detailPages["packages-journey"] = {
+  ...detailPages["detailing"],
+  kind: "packages",
+  title: "Packages Journey — Service Discovery",
+  eyebrow: "PACKAGES JOURNEY",
+  intro: "Explore our five comprehensive service categories, from thermal dry-steam decontamination to multi-stage concours paint correction. Inspect inclusions and prepare your vehicle enquiry."
+};
+
+detailPages["packages"] = {
+  ...detailPages["detailing"],
+  kind: "packages",
+  title: "Detailing Packages & Polishing Scope",
+  eyebrow: "PRECISION PACKAGES",
+  intro: "Compare Paint Enhancement vs. Multi-Stage Correction, inspect studio inclusions, and review the technical difference between synthetic sealants and permanent ceramic SiC quartz."
+};
+
+detailPages["detailing"] = {
+  ...detailPages["detailing"],
+  kind: "packages"
+};
+
+detailPages["automods"] = {
+  ...detailPages["auto-mods"],
+  kind: "auto-mods",
+  title: "Auto Mods & Customisation Build Sheet",
+  eyebrow: "DESIGN. BUILD. PERFECTED."
+};
+
+detailPages["autotuning"] = {
+  ...detailPages["auto-mods"],
+  kind: "tuning",
+  title: "Auto Tuning & Performance Engineering",
+  eyebrow: "AUTO TUNING"
+};
+
+detailPages["customisation-build"] = {
+  ...detailPages["auto-mods"],
+  kind: "tuning",
+  title: "Customisation Build Sheet & Moodboards",
+  eyebrow: "CUSTOMISATION BUILD"
+};
+
+detailPages["coatings-gallery"] = {
+  ...detailPages["coatings"],
+  kind: "coatings",
+  title: "Surface Coatings Gallery",
+  eyebrow: "COATINGS GALLERY"
+};
+
+detailPages["detailing-menu"] = {
+  ...detailPages["detailing"],
+  kind: "planner",
+  title: "Detailing Menu & Guided Selection",
+  eyebrow: "DETAILING MENU"
+};
+
+detailPages["car-care-planner"] = {
+  ...detailPages["car-care"],
+  kind: "planner",
+  title: "Car Care Planner",
+  eyebrow: "CAR CARE PLANNER"
+};
+
+detailPages["car-care"] = {
+  ...detailPages["car-care"],
+  kind: "planner"
+};
+
+detailPages["shop-care-shelf"] = {
+  ...detailPages["shop"],
+  kind: "shop",
+  title: "Shop Care Shelf",
+  eyebrow: "CARE SHELF"
+};
+
+detailPages["about-ohio"] = {
+  ...detailPages["about-us"],
+  kind: "about",
+  title: "About MR. DETAILER Studio",
+  eyebrow: "ABOUT US"
+};
+
+detailPages["about-us"] = {
+  ...detailPages["about-us"],
+  kind: "about"
+};
+
+detailPages["warranty-care-hub"] = {
+  ...detailPages["warranty"],
+  kind: "warranty",
+  title: "Warranty Care Hub",
+  eyebrow: "WARRANTY HUB"
+};
+
+detailPages["detail-journal"] = {
+  ...detailPages["journal"],
+  kind: "journal",
+  title: "Detail Journal & Technical Guides",
+  eyebrow: "DETAIL JOURNAL"
+};
+
+detailPages["journal"] = {
+  ...detailPages["journal"],
+  kind: "journal"
+};
+
+detailPages["detailing-tips"] = {
+  ...detailPages["detailing-tips"],
+  kind: "journal"
+};
+
+detailPages["product-guide"] = {
+  ...detailPages["product-guide"],
+  kind: "journal"
+};
+
+detailPages["latest-updates"] = {
+  ...detailPages["latest-updates"],
+  kind: "journal"
+};
+
+detailPages["own-a-studio"] = {
+  ...detailPages["own-a-studio"],
+  kind: "franchise"
+};
+
+detailPages["meet-the-team"] = {
+  ...detailPages["meet-the-team"],
+  kind: "franchise"
+};
+
+detailPages["meet-us"] = {
+  ...detailPages["meet-us"],
+  kind: "franchise"
+};
+
 detailPages["paint-protection-film"] = detailPages["ppf"];
 detailPages["franchise"] = detailPages["own-a-studio"];
+

@@ -14,6 +14,7 @@ import {
   RebuildStory,
   VideoPlaceholders,
 } from "./rebuild-interactions";
+import { NamexShowcase } from "./namex-showcase";
 
 function SectionIntro({ label, title, href, action }: { label: string; title: React.ReactNode; href: string; action: string }) {
   return (
@@ -42,12 +43,6 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
 
       <main className="or-main" id="main">
         <section className="or-hero" id="hero" aria-label="MR. DETAILER studio">
-          <div className="or-preview-selector">
-            <span>OHIO — PREVIEW 1</span>
-            <a href="/ohio-preview/second">
-              View Second Ohio Preview <ArrowUpRight className="or-arrow-inline" />
-            </a>
-          </div>
           <Image
             className="or-hero-image"
             src={imagePath("IMG_20260809_182226.jpg.jpeg")}
@@ -250,22 +245,8 @@ export function RebuildPage({ previewOne = false }: { previewOne?: boolean }) {
                 </details>
               ))}
               <details id="namex">
-                <summary>About NameX</summary>
-                <div className="or-namex">
-                  <div className="client-namex-logo-wrap">
-                    <Image className="client-namex-logo client-namex-logo-dark" src={clientConfig.namexLogoDark} alt="NameX" width={280} height={105} />
-                    <Image className="client-namex-logo client-namex-logo-light" src={clientConfig.namexLogoLight} alt="NameX" width={280} height={105} />
-                  </div>
-                  <div>
-                    <h3>ABOUT NAMEX</h3>
-                    <p>
-                      Know what protects your car. A beautiful finish deserves thoughtful protection. Explore NameX at Mr. Detailer.
-                    </p>
-                    <a href={whatsapp} target="_blank" rel="noreferrer">
-                      Enquire about NameX <ArrowUpRight className="or-inline-arrow" />
-                    </a>
-                  </div>
-                </div>
+                <summary>About NameX · Surface Science Division</summary>
+                <NamexShowcase />
               </details>
               <details id="shop">
                 <summary>Shop / Product enquiries</summary>

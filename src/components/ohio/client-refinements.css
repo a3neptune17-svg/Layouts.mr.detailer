@@ -882,10 +882,60 @@
   font-size: 22px;
   margin: 0 0 6px;
 }
-.client-detail-cta-copy p {
-  color: var(--client-muted);
-  font-size: 14px;
-  margin: 0;
+/* --- Targeted Homepage Revisions: Sidebar Spacing, Arrow Clean-up, Shop Mat Framing, and Typography --- */
+.ohio-rebuild .or-project-1 .or-project-open {
+  display: none !important;
+}
+
+@media (min-width: 1181px) {
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-rail,
+  .ohio-rebuild .or-rail {
+    justify-content: flex-start !important;
+    gap: 16px !important;
+  }
+  .ohio-client-preview .or-rail-nav {
+    margin: 14px 0 !important;
+    gap: 8px !important;
+  }
+  .ohio-client-preview .or-nav-link {
+    padding: 3px 0 !important;
+  }
+  .ohio-client-preview .or-rail-quote {
+    margin-top: auto !important;
+  }
+}
+
+.ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panel .or-panel-heading {
+  font-size: clamp(26px, 2.4vw, 38px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panel .or-product-line {
+  font-size: clamp(11.5px, 0.95vw, 13.5px) !important;
+  letter-spacing: 0.05em !important;
+  opacity: 0.85 !important;
+}
+
+.ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panel .or-panel-subline {
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 600 !important;
+}
+
+/* Studio Mat framing for genuine shop photo without black patch */
+.or-shop-card-media {
+  background: #ffffff !important;
+  padding: clamp(16px, 2vw, 24px) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16) !important;
+}
+
+[data-theme="light"] .or-shop-card-media {
+  background: #ffffff !important;
+  border-color: rgba(20, 21, 18, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
 }
 
 /* Responsive Breakpoints */
@@ -917,3 +967,383 @@
     padding-top: 130px;
   }
 }
+
+/* ==========================================================================
+   NameX Museum-Grade Art-Directed Showcase
+   ========================================================================== */
+.namex-showcase {
+  background: var(--client-surface);
+  border: 1px solid var(--client-line);
+  border-radius: 6px;
+  padding: 32px;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.namex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--client-line);
+}
+
+.namex-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.namex-byline {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--client-lime);
+  text-transform: uppercase;
+}
+
+.namex-discipline-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--client-muted);
+}
+
+.namex-pill-dot {
+  opacity: 0.4;
+}
+
+.namex-showcase-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.namex-visual-mat {
+  position: relative;
+  background: #0d0e0c;
+  border: 1px solid var(--client-line);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .namex-visual-mat {
+  background: #f7f6f2;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.namex-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/11;
+  min-height: 340px;
+}
+
+.namex-visual-caption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--client-line);
+}
+
+[data-theme="light"] .namex-visual-caption {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.namex-code-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--client-lime-soft);
+  color: var(--client-lime);
+  border: 1px solid var(--client-lime);
+}
+
+.namex-caption-text {
+  font-size: 12px;
+  color: var(--client-ink);
+  font-weight: 500;
+}
+
+.namex-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.namex-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.namex-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--client-line);
+  background: transparent;
+  color: var(--client-ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.namex-tab-btn:hover {
+  background: var(--client-lime-soft);
+  border-color: var(--client-lime);
+}
+
+.namex-tab-btn.is-active {
+  background: var(--client-lime-soft);
+  border-color: var(--client-lime);
+}
+
+.namex-tab-code {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--client-lime);
+}
+
+.namex-tab-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.namex-product-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.namex-product-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--client-ink);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.namex-product-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--client-muted);
+  margin: 0;
+}
+
+.namex-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--client-line);
+}
+
+[data-theme="light"] .namex-spec-grid {
+  background: #fbfbf9;
+}
+
+.namex-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.namex-spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--client-muted);
+  text-transform: uppercase;
+}
+
+.namex-spec-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--client-ink);
+}
+
+.namex-highlights ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.namex-highlights li {
+  font-size: 12.5px;
+  color: var(--client-muted);
+  position: relative;
+  padding-left: 14px;
+  line-height: 1.45;
+}
+
+.namex-highlights li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--client-lime);
+}
+
+.namex-finish-study {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.namex-finish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.namex-finish-active {
+  font-size: 11.5px;
+  color: var(--client-lime);
+  font-weight: 600;
+}
+
+.namex-finish-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.namex-finish-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--client-line);
+  background: transparent;
+  color: var(--client-ink);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.namex-finish-btn:hover,
+.namex-finish-btn.is-active {
+  background: var(--client-ink);
+  color: var(--client-bg);
+  border-color: var(--client-ink);
+}
+
+.namex-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.namex-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: var(--client-lime);
+  color: #1a1a18 !important;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.namex-cta-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.namex-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--client-ink);
+  text-decoration: none;
+}
+
+.namex-secondary-link:hover {
+  color: var(--client-lime);
+}
+
+.namex-btn-arrow {
+  width: 14px;
+  height: 14px;
+}
+
+.namex-journey-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--client-line);
+}
+
+.namex-journey-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.namex-step-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--client-lime);
+  font-family: inherit;
+  line-height: 1;
+}
+
+.namex-journey-step strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--client-ink);
+  margin-bottom: 4px;
+}
+
+.namex-journey-step p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--client-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .namex-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .namex-journey-bar {
+    grid-template-columns: 1fr;
+  }
+  .namex-tabs {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -741,9 +741,11 @@ export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boole
                 href={ohioPage("detailing")}
                 aria-label={`Explore ${project.title}`}
               >
-                <span className="or-project-open" aria-hidden="true">
-                  <ArrowUpRight className="or-arrow" />
-                </span>
+                {position !== 1 && (
+                  <span className="or-project-open" aria-hidden="true">
+                    <ArrowUpRight className="or-arrow" />
+                  </span>
+                )}
               </a>
               <span className="or-project-caption">
                 <strong>{project.title}</strong>
