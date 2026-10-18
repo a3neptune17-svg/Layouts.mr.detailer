@@ -595,7 +595,7 @@ export function RebuildNavigation() {
                       className="or-popup-hover-badge"
                       aria-label={`Expand ${item.label}`}
                       aria-expanded={hoveredMenuRow === item.label}
-                      onClick={() => setHoveredMenuRow(item.label)}
+                      onClick={() => setHoveredMenuRow((curr) => (curr === item.label ? null : item.label))}
                     >
                       +
                     </button>
@@ -679,9 +679,40 @@ export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boole
       {projects.map((project, position) => (
         <div
           key={project.title}
-          className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}`}
+          className={`or-project or-project-${position}${project.video ? " or-video-project" : ""}${position === 2 ? " or-project-shop" : ""}`}
         >
-          {project.video ? (
+          {position === 2 ? (
+            <div className="or-shop-card">
+              <div className="or-shop-card-content">
+                <div className="or-shop-card-header">
+                  <p className="or-panel-eyebrow">STUDIO ESSENTIALS</p>
+                  <h3 className="or-shop-title">SHOP</h3>
+                  <div className="or-shop-copy">
+                    <p className="or-shop-tagline">CURATED FOR EVERY CAR</p>
+                    <p className="or-shop-subline">BRING STUDIO QUALITY HOME</p>
+                  </div>
+                  <a
+                    className="or-shop-cta"
+                    href={ohioPage("shop")}
+                    aria-label="Explore Shop"
+                  >
+                    <span>Explore Products</span>
+                    <ArrowUpRight className="or-arrow-inline" />
+                  </a>
+                </div>
+                <div className="or-shop-card-media">
+                  <Image
+                    src="/images/client-shop-pro-kit.jpg"
+                    alt="MR. DETAILER Pro Detail Kit with care products and accessories"
+                    width={700}
+                    height={460}
+                    className="or-shop-kit-img"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          ) : project.video ? (
             <>
               {position === 0 && clientConfig.namexUrl ? (
                 <a
@@ -707,7 +738,7 @@ export function RebuildGallery({ intro }: { intro: ReactNode; previewOne?: boole
               />
               <a
                 className="or-project-hit"
-                href={position === 2 ? ohioPage("shop") : ohioPage("detailing")}
+                href={ohioPage("detailing")}
                 aria-label={`Explore ${project.title}`}
               >
                 <span className="or-project-open" aria-hidden="true">

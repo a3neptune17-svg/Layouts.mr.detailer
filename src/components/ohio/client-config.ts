@@ -15,7 +15,10 @@ export const clientConfig = {
   namexLogoLight: "/images/namex-logo-light.png",
   namexLogoDark: "/images/namex-logo-dark.png",
   namexLogo: "/images/namex-logo-dark.png",
-  shopImage: "/images/client-shop.jpg",
+  shopImage: "/images/client-shop-pro-kit.jpg",
+  shopProKitImage: "/images/client-shop-pro-kit.jpg",
+  namexCoatingsTrio: "/images/namex-coatings-trio.jpg",
+  namexCeramicMatrix: "/images/namex-ceramic-matrix.jpg",
 };
 
 export const ohioPage = (slug: string) => `/ohio-preview/explore/${slug}`;

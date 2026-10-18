@@ -214,10 +214,11 @@
 
 /* --- Hero 3-Panel Presentation (PPF, Coatings, Auto Mods) --- */
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-main {
-  margin-right: var(--or-space) !important;
+  margin-right: 0 !important;
 }
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-hero-panels {
   width: 100% !important;
+  margin: 0 !important;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 0 !important;
@@ -449,11 +450,120 @@
   background: #141512 !important;
   color: #fff !important;
 }
+
+/* --- Dedicated Shop Section Showcase --- */
+.ohio-client-preview .ohio-rebuild.or-preview-one .or-project-2.or-project-shop,
+.ohio-rebuild .or-project-2.or-project-shop {
+  background: var(--client-surface) !important;
+  aspect-ratio: auto !important;
+  min-height: 440px !important;
+  overflow: hidden !important;
+}
+.ohio-client-preview .ohio-rebuild.or-preview-one .or-project-2.or-project-shop::after,
+.ohio-rebuild .or-project-2.or-project-shop::after {
+  display: none !important;
+}
+.or-shop-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: var(--client-surface);
+  border: 1px solid var(--client-line);
+  box-sizing: border-box;
+}
+.or-shop-card-content {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  width: 100%;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(24px, 3.5vw, 48px);
+}
+.or-shop-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.or-shop-title {
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--client-ink);
+}
+.or-shop-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 16px;
+}
+.or-shop-tagline {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--client-lime);
+  margin: 0;
+}
+.or-shop-subline {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--client-muted);
+  margin: 0;
+}
+.or-shop-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 18px;
+  background: var(--client-lime);
+  color: #141512 !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.or-shop-cta:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+.or-shop-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.or-shop-kit-img {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.or-shop-card:hover .or-shop-kit-img {
+  transform: scale(1.025);
+}
+@media (max-width: 900px) {
+  .or-shop-card-content {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+  }
+}
+
+/* --- Blog Carousel: L-Shaped Alignment & Slim Progress Indicator --- */
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-story {
   display: flex;
   align-items: flex-end;
   min-height: 760px;
-  padding: clamp(20px, 3vw, 40px);
+  padding: 0 !important;
   isolation: isolate;
 }
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-story::after {
@@ -468,10 +578,11 @@
   z-index: -2;
 }
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-story-card {
-  width: min(480px, 100%);
+  width: min(520px, 100%);
   min-height: 360px;
-  padding: clamp(24px, 3vw, 36px);
-  border-radius: 8px;
+  padding: clamp(28px, 3.5vw, 44px);
+  margin: 0 !important;
+  border-radius: 0 12px 0 0 !important;
   background: rgba(229, 252, 160, .96);
   box-shadow: 0 16px 48px rgba(0, 0, 0, .18);
 }
@@ -482,23 +593,27 @@
 }
 .ohio-client-preview .ohio-rebuild.or-preview-one .or-story-card .client-carousel-track {
   max-width: none;
-  margin: 24px 0 0;
+  margin: 20px 0 0;
 }
 @media (max-width: 768px) {
   .ohio-client-preview .ohio-rebuild.or-preview-one .or-story {
     min-height: 680px;
-    padding: 16px;
+    padding: 0 !important;
+  }
+  .ohio-client-preview .ohio-rebuild.or-preview-one .or-story-card {
+    border-radius: 0 !important;
+    padding: 24px 16px;
   }
 }
 .client-carousel-track {
   position: relative;
   height: 2px;
-  width: 100%;
-  max-width: 240px;
+  width: 140px;
   background: rgba(20, 21, 18, 0.2);
-  margin-bottom: 20px;
+  margin-top: 18px;
+  margin-bottom: 0;
   overflow: visible;
-  border-radius: 2px;
+  border-radius: 999px;
 }
 .ohio-rebuild[data-theme="dark"] .client-carousel-track {
   background: rgba(20, 21, 18, 0.22);
@@ -510,16 +625,16 @@
   height: 100%;
   background: #141512;
   opacity: 0.35;
-  border-radius: 2px;
+  border-radius: 999px;
 }
 .client-carousel-indicator {
   position: absolute;
-  top: -1px;
-  width: 20px;
-  height: 4px;
-  border-radius: 2px;
+  top: -2px;
+  width: 14px;
+  height: 6px;
+  border-radius: 3px;
   background: #141512;
-  box-shadow: 0 0 4px rgba(20, 21, 18, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   transition: none;
 }
 
@@ -702,6 +817,54 @@
   height: auto;
   border-radius: 3px;
   object-fit: cover;
+}
+
+/* Service Hero Showcase Banners */
+.client-service-banner {
+  position: relative;
+  border: 1px solid var(--client-line);
+  background: var(--client-surface);
+  margin: 32px 0 48px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.client-service-banner-media {
+  position: relative;
+  width: 100%;
+  max-height: 480px;
+  background: #0d0f0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.client-service-banner-img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.client-service-banner:hover .client-service-banner-img {
+  transform: scale(1.02);
+}
+.client-service-banner-overlay {
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--client-surface);
+  border-top: 1px solid var(--client-line);
+}
+.client-service-banner-overlay h3 {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 6px 0 10px;
+}
+.client-service-banner-overlay p {
+  color: var(--client-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 70ch;
 }
 
 /* Contact Action Strip in Dedicated Pages */

@@ -66,6 +66,69 @@ export function DetailPage({ content }: { content: DetailContent }) {
             </div>
           )}
 
+          {/* Coatings Featured Media Banner */}
+          {content.kind === "coatings" && (
+            <div className="client-service-banner">
+              <div className="client-service-banner-media">
+                <Image
+                  src={clientConfig.namexCoatingsTrio}
+                  alt="NameX Surface Coatings Trio — Ceramic SiC, Borophene, Graphene"
+                  width={1100}
+                  height={620}
+                  className="client-service-banner-img"
+                  priority
+                />
+              </div>
+              <div className="client-service-banner-overlay">
+                <p className="or-panel-eyebrow">NAMEX SURFACE SCIENCE</p>
+                <h3>CERAMIC SiC · BOROPHENE · GRAPHENE</h3>
+                <p>Advanced chemical bonding engineered for maximum optical clarity and extreme hydrophobic protection.</p>
+              </div>
+            </div>
+          )}
+
+          {/* PPF Featured Media Banner */}
+          {content.kind === "ppf" && (
+            <div className="client-service-banner">
+              <div className="client-service-banner-media">
+                <Image
+                  src={imagePath("IMG_20260809_180906.jpg.jpeg")}
+                  alt="Precision Film Edge Alignment and Installation"
+                  width={1100}
+                  height={620}
+                  className="client-service-banner-img"
+                  priority
+                />
+              </div>
+              <div className="client-service-banner-overlay">
+                <p className="or-panel-eyebrow">PRECISION ALIGNMENT & EDGE TUCK</p>
+                <h3>OPTICALLY CLEAR ALIPHATIC POLYURETHANE</h3>
+                <p>Self-healing elastomeric matrix dissipating surface swirls with seamless rolled edges.</p>
+              </div>
+            </div>
+          )}
+
+          {/* Auto Mods Featured Media Banner */}
+          {content.kind === "auto-mods" && (
+            <div className="client-service-banner">
+              <div className="client-service-banner-media">
+                <Image
+                  src={imagePath("IMG_20260809_180252.jpg.jpeg")}
+                  alt="MR. DETAILER Studio Customisation Bay"
+                  width={1100}
+                  height={620}
+                  className="client-service-banner-img"
+                  priority
+                />
+              </div>
+              <div className="client-service-banner-overlay">
+                <p className="or-panel-eyebrow">BESPOKE WORKMANSHIP</p>
+                <h3>DENTING · PAINTING · TUNING · STYLING</h3>
+                <p>From climate-controlled paint refinishing to aero carbon kits and performance upgrades.</p>
+              </div>
+            </div>
+          )}
+
           {/* Studio Gallery Grid */}
           {isGallery && (
             <div className="client-gallery">
